@@ -1,0 +1,62 @@
+services:
+  # Dockerización para la app de backend.
+  app:
+    # Construye el contenedor utilizando el Dockerfile en el directorio local "/src" (indicado por "./src").
+    build: ./src
+    # Nombre del contenedor.
+    container_name: ucu_snow_sports_app
+    # puerto_host:puerto_container. Expone el puerto 5000 del contenedor en el puerto 3006 del host.
+    ports:
+      - "3006:5000"
+    # No se va a iniciar el servicio de la app hasta que el servicio "db" (base de datos) esté levantado.
+    depends_on:
+      - db
+    # Variables de entorno para configurar la conexión con la base de datos.
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=root_password
+      - DB_NAME=ucu_snow_sports
+    # Volume para que los archivos del host se sincronicen con el contenedor.
+    # Pasa todos los archivos del directorio local "/src" (en la máquina host) al directorio "/src" dentro del contenedor.
+    volumes:
+      - ./src:/src
+
+    # El servicio de la app comparte la red "ucu_network" con el servicio de la base de datos.
+    networks:
+      - ucu_network
+
+  # Dockerización para la base de datos MySQL.
+  db:
+    # Versión de MySQL que va a usar la base de datos.
+    image: mysql:8.0
+    # Nombre del contenedor.
+    container_name: ucu_snow_sports_db
+    # Variables de entorno para configurar la base de datos MySQL.
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: ucu_snow_sports
+      # Este usuario es el que utilizará la aplicación Flask para conectarse a la base de datos y realizar operaciones.
+      MYSQL_USER: ucu_user
+      MYSQL_PASSWORD: ucu_password
+    # Expone el puerto 3306 del contenedor (puerto estándar de MySQL) al puerto 3306 del host.
+    ports:
+      - "3306:3306"
+
+    # Volume para persistir los datos de la base de datos. Los archivos de la base de datos en "/var/lib/mysql" (dentro del contenedor) se guardarán en el volumen "db_data".
+    # Este volumen se encuentra en el sistema de archivos de la máquina virtual que Docker utiliza (Docker Desktop VM).
+    volumes:
+      - db_data:/var/lib/mysql
+
+    # La base de datos también comparte la red "ucu_network".
+    networks:
+      - ucu_network
+
+# Definición de los volúmenes. "db_data" será usado para almacenar los datos de la base de datos MySQL de forma persistente.
+volumes:
+  db_data:
+
+    # Definición de las redes. "ucu_network" es la red interna que conecta la app y la base de datos.
+networks:
+  ucu_network:

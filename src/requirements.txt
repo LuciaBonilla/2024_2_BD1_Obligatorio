@@ -1,0 +1,3 @@
+# Requerimientos
+Flask
+mysql-connector-python
