@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-# Obtén las variables de entorno para la base de datos, definidas en docker-compose.yml
+# Obtiene las variables de entorno para la base de datos, definidas en docker-compose.yml.
 DB_HOST = os.environ.get('DB_HOST')
 DB_PORT = os.environ.get('DB_PORT')
 DB_USER = os.environ.get('DB_USER')
@@ -19,7 +19,7 @@ def index():
 @app.route('/db-check', methods=['GET'])
 def db_check():
     try:
-        # Intenta conectarte a la base de datos usando las variables de entorno
+        # Intenta conectarse a la base de datos usando las variables de entorno.
         connection = mysql.connector.connect(
             host=DB_HOST,
             port=DB_PORT,
@@ -33,10 +33,9 @@ def db_check():
         else:
             return jsonify({"message": "Error al conectar con la base de datos"}), 500
     except mysql.connector.Error as err:
-        # Captura los errores de conexión y muestra un mensaje útil
         return jsonify({"message": f"Error al conectar a la base de datos: {err}"}), 500
     finally:
-        # Asegúrate de cerrar la conexión si fue exitosa
+        # Cierra la conexión si fue exitosa.
         if 'connection' in locals() and connection.is_connected():
             connection.close()
 

@@ -10,7 +10,7 @@ COPY requirements.txt .
 # Instala las dependencias del proyecto.
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia el resto de la aplicación a /app.
+# Copia el resto de la aplicación a /src.
 COPY . .
 
 # Expone el puerto 5000.
