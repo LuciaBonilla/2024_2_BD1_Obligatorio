@@ -1,7 +1,7 @@
 services:
   # Dockerización para la app de backend.
   app:
-    # Construye el contenedor utilizando el Dockerfile en el directorio local "/src" (indicado por "./src").
+    # Construye el contenedor utilizando el Dockerfile en el directorio local "./src".
     build: ./src
     # Nombre del contenedor.
     container_name: ucu_snow_sports_app

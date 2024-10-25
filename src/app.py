@@ -14,8 +14,9 @@ DB_NAME = os.environ.get('DB_NAME')
 # Ruta principal.
 @app.route('/')
 def index():
-    return jsonify(message="Deportes de nieve de la UCU", db_host=DB_HOST, db_port=DB_PORT, db_user=DB_USER, db_password=DB_PASSWORD, db_name=DB_NAME)
+    return jsonify(message="Deportes de nieve UCU")
 
+# Objetivo de ruta: Checkear la conexión con la base de datos.
 @app.route('/db-check', methods=['GET'])
 def db_check():
     try:
@@ -29,7 +30,7 @@ def db_check():
         )
 
         if connection.is_connected():
-            return jsonify({"message": "Conexión exitosa a la base de datos"}), 200
+            return jsonify({"message": f"Conexión exitosa a la base de datos: {DB_NAME}"}), 200
         else:
             return jsonify({"message": "Error al conectar con la base de datos"}), 500
     except mysql.connector.Error as err:
