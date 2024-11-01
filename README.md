@@ -11,8 +11,10 @@
 ## Pasos para probar el backend y la base de datos
 
 1) Sobre el directorio raíz ejecutar
-    - docker-compose build
-    - docker-compose up
+    - `docker-compose build`
+    - `docker-compose up` 
+
+Se recomeinda utilizar `docker-compose -d` para que sea detach, y luego `docker-compose down` para asegurarte que se cierra la base de datos de manera correcta 
 
 Esto levantará el contenedor Docker con la base de datos y luego el contenedor con el backend.
 
