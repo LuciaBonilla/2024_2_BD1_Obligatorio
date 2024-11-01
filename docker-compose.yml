@@ -19,7 +19,7 @@ services:
       - DB_PASSWORD=root_password
       - DB_NAME=ucu_snow_sports
     # Volume para que los archivos del host se sincronicen con el contenedor.
-    # Pasa todos los archivos del directorio local "/src" (en la máquina host) al directorio "/src" dentro del contenedor.
+    # Pasa todos los archivos del directorio local "./src" al directorio "./src" dentro del contenedor.
     volumes:
       - ./src:/src
 
@@ -37,23 +37,25 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: ucu_snow_sports
-      # Este usuario es el que utilizará la aplicación Flask para conectarse a la base de datos y realizar operaciones.
+      # Este usuario se usará para luego configurarle permisos más restringidos que el usuario root.
       MYSQL_USER: ucu_user
       MYSQL_PASSWORD: ucu_password
-    # Expone el puerto 3306 del contenedor (puerto estándar de MySQL) al puerto 3306 del host.
+    # Expone el puerto 3306 del contenedor (puerto estándar de MySQL) al puerto 3305 del host.
     ports:
-      - "3306:3306"
+      - "3305:3306"
 
-    # Volume para persistir los datos de la base de datos. Los archivos de la base de datos en "/var/lib/mysql" (dentro del contenedor) se guardarán en el volumen "db_data".
-    # Este volumen se encuentra en el sistema de archivos de la máquina virtual que Docker utiliza (Docker Desktop VM).
+    # Volume para persistir los datos de la base de datos.
+    # "db_data" es un volumen manejado por Docker que es oculto.
+    # En "/var/lib/mysql" dentro del contenedor, MySQL por defecto escribe archivos.
     volumes:
       - db_data:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d
 
     # La base de datos también comparte la red "ucu_network".
     networks:
       - ucu_network
 
-# Definición de los volúmenes. "db_data" será usado para almacenar los datos de la base de datos MySQL de forma persistente.
+# Definición de los volumes. "db_data" será usado para almacenar los datos de la base de datos MySQL de forma persistente.
 volumes:
   db_data:
 
