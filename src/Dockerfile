@@ -10,11 +10,8 @@ COPY requirements.txt .
 # Instala las dependencias del proyecto.
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia el resto de la aplicación a /src.
-COPY . .
-
 # Expone el puerto 5000.
 EXPOSE 5000
 
-# Comando para ejecutar la aplicación.
-CMD ["python", "app.py"]
+# Comando para ejecutar la aplicación con hot reload y debug mode .
+CMD ["flask", "--app", "app.py", "--debug", "run","--host=0.0.0.0"]

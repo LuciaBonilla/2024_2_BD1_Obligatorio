@@ -12,11 +12,15 @@ DB_PASSWORD = os.environ.get('DB_PASSWORD')
 DB_NAME = os.environ.get('DB_NAME')
 
 # Ruta principal.
+
+
 @app.route('/')
 def index():
     return jsonify(message="Deportes de nieve UCU")
 
 # Objetivo de ruta: Checkear la conexión con la base de datos.
+
+
 @app.route('/db-check', methods=['GET'])
 def db_check():
     try:
@@ -39,6 +43,7 @@ def db_check():
         # Cierra la conexión si fue exitosa.
         if 'connection' in locals() and connection.is_connected():
             connection.close()
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
