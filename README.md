@@ -19,3 +19,5 @@ Se recomeinda utilizar `docker-compose -d` para que sea detach, y luego `docker-
 Esto levantará el contenedor Docker con la base de datos y luego el contenedor con el backend.
 
 2) Luego de levantados los contenedores, ir a las rutas http://localhost:3006 y http://localhost:3006/db-check
+
+3) Para hacer reload del projecto podemos usar `docker-compose up -d --build --force-recreate`
