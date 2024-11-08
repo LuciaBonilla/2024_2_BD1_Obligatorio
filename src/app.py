@@ -5,23 +5,19 @@ import os
 app = Flask(__name__)
 
 # Obtiene las variables de entorno para la base de datos, definidas en docker-compose.yml.
-DB_HOST = os.environ.get('DB_HOST')
-DB_PORT = os.environ.get('DB_PORT')
-DB_USER = os.environ.get('DB_USER')
-DB_PASSWORD = os.environ.get('DB_PASSWORD')
-DB_NAME = os.environ.get('DB_NAME')
+DB_HOST = os.environ.get("DB_HOST")
+DB_PORT = os.environ.get("DB_PORT")
+DB_USER = os.environ.get("DB_USER")
+DB_PASSWORD = os.environ.get("DB_PASSWORD")
+DB_NAME = os.environ.get("DB_NAME")
 
 # Ruta principal.
-
-
-@app.route('/')
+@app.route("/")
 def index():
     return jsonify(message="Deportes de nieve UCU")
 
 # Objetivo de ruta: Checkear la conexión con la base de datos.
-
-
-@app.route('/db-check', methods=['GET'])
+@app.route("/db-check", methods=["GET"])
 def db_check():
     try:
         # Intenta conectarse a la base de datos usando las variables de entorno.
@@ -41,9 +37,9 @@ def db_check():
         return jsonify({"message": f"Error al conectar a la base de datos: {err}"}), 500
     finally:
         # Cierra la conexión si fue exitosa.
-        if 'connection' in locals() and connection.is_connected():
+        if "connection" in locals() and connection.is_connected():
             connection.close()
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)

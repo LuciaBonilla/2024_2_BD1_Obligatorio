@@ -1,8 +1,10 @@
 services:
   # Dockerización para la app de backend.
   app:
-    # Construye el contenedor utilizando el Dockerfile en el directorio local "./src".
-    build: ./src
+    # Construye el contenedor utilizando el Dockerfile en el directorio local. El contexto del build es el directorio local "./src".
+    build:
+      context: ./src
+      dockerfile: ../Dockerfile
     # Nombre del contenedor.
     container_name: ucu_snow_sports_app
     # puerto_host:puerto_container. Expone el puerto 5000 del contenedor en el puerto 3006 del host.
