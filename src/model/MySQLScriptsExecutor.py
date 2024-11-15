@@ -6,9 +6,11 @@ Responsabilidad: Conectarse a la base de datos y ejecutar los scripts MySQL que 
 Si ejecuta scripts para consultar datos de la base, entonces retorna los datos consultados.
 Si ejecuta scripts para modificar la base, entonces retorna el resultado de la operación (exitosa/no exitosa).
 """
+
+
 class MySQLScriptsExecutor:
     # ->>> ATRIBUTOS DE CLASE.
-    
+
     # Obtiene las variables de entorno para la base de datos, definidas en docker-compose.yml.
     __DB_HOST = os.environ.get("DB_HOST")
     __DB_PORT = os.environ.get("DB_PORT")
@@ -46,7 +48,7 @@ class MySQLScriptsExecutor:
     def __endDatabaseConnection(cls):
         """
         Apaga la conexión con la base de datos.
-        
+
         Estado: método completado.
         """
         if (cls.__CONNECTION and cls.__CONNECTION.is_connected()):
@@ -57,10 +59,10 @@ class MySQLScriptsExecutor:
     def getDatabaseConnectionStatus(cls):
         """
         Dice si la conexión a la base de datos fue exitosa.
-        
+
         Retorna:
             True si la conexión es exitosa, False en caso contrario.
-            
+
         Estado: método completado.
         """
         status = None
@@ -77,37 +79,37 @@ class MySQLScriptsExecutor:
     def runScriptToQueryDatabase(cls, script, params=None):
         """
         Ejecuta un script de MySQL con el objetivo de consultar datos de la base.
-        
+
         Entradas:
             script: El script MySQL a ejecutar.
             params: Tupla que contiene los valores que reemplazarán los placeholders (%s) en la consulta SQL.
             El uso de params permite que el controlador de MySQL maneje estos valores de manera segura, protegiendo contra inyección SQL.
-        
+
         Retorna:
             Los datos consultados o None.
-            
+
         Estado: método completado.
         """
         data = None
         try:
             # Establece la conexión con la base de datos.
             cls.__startDatabaseConnection()
-            
+
             # Crea un objeto cursor para ejecutar el script SQL.
             cursor = cls.__CONNECTION.cursor(dictionary=True)
-            
+
             # Ejecuta el script de consulta.
             if (params is None):
                 cursor.execute(script)
             else:
                 cursor.execute(script, params=params)
-            
+
             # Obtiene todos los resultados de la consulta como una lista de diccionarios, donde cada diccionario representa un registro de la tabla.
             data = cursor.fetchall()
-            
+
             if (data == []):
                 data = None
-            
+
             # Cierra el cursor.
             cursor.close()
         except mysql.connector.Error as error:
@@ -116,21 +118,21 @@ class MySQLScriptsExecutor:
             # Asegura que la conexión se cierre en cualquier caso.
             cls.__endDatabaseConnection()
         return data
-    
+
     @classmethod
-    def runScriptToModifyDatabase(cls, script, params=None):
+    def runScriptToModifyDatabase(cls, script, params=None) -> bool:
         """
         Ejecuta un script de MySQL con el objetivo de modificar datos en la base de datos.
         Puede realizar operaciones como, por ejemplo, INSERT, UPDATE o DELETE.
-        
+
         Entradas:
             script: El script MySQL a ejecutar.
             params: Tupla que contiene los valores que reemplazarán los placeholders (%s) en la consulta SQL.
             El uso de params permite que el controlador de MySQL maneje estos valores de manera segura, protegiendo contra inyección SQL.
-            
+
         Retorna:
             True si la operación fue exitosa, y False en caso de error.
-        
+
         Estado: método terminado.
         """
         result = None
@@ -159,7 +161,7 @@ class MySQLScriptsExecutor:
             # Realiza un rollback para revertir los cambios en caso de error.
             if cls.__CONNECTION:
                 cls.__CONNECTION.rollback()
-                
+
             result = False
         finally:
             # Asegura que la conexión se cierre en cualquier caso.

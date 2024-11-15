@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 # CONTROLADORES.
 from controllers.actividadesController import ActividadesController
 from controllers.turnosController import TurnosController
+from controllers.instructoresController import instructoresController
 
 # MODEL PARA CHECKEAR CONEXIÓN A LA BASE DE DATOS.
 from model.MySQLScriptsExecutor import MySQLScriptsExecutor
@@ -38,3 +39,14 @@ def postActividad():
 @api.route("/turnos", methods=["GET"])
 def getAllTurnos():
     return TurnosController.getAllTurnos()
+
+# INSTRUCTORES
+
+@api.route("/instructores", methods=["GET"])
+def getAllInstructores():
+    return instructoresController.getAllInstructores()
+
+@api.route("/instructores", methods=["POST"])
+def postInstructor():
+    return instructoresController.createInstructor(request)
+

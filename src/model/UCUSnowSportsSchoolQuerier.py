@@ -6,17 +6,6 @@ Responsabilidad: Enviar consultas MySQL a MySQLScriptsExecutor para interactuar 
 Puede retornar la información consultada o retornar el resultado de una operación de modificación a la base.
 """
 class UCUSnowSportsSchoolQuerier:
-    def getAllInstructores():
-        script = """
-            SELECT *
-            FROM INSTRUCTORES
-        """
-        data = MySQLScriptsExecutor.runScriptToQueryDatabase(script=script)
-        if (data != None):
-            return DataFormatter.formatData(data=data)
-        else:
-            return None
-    
     def getAllAlumnos():
         script = """
             SELECT *
