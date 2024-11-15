@@ -10,8 +10,10 @@ from utils.utilSql import utilSql
 
 class Instructor:
     table = "INSTRUCTORES"
+    values_needed = ["ci", "nombre", "apellido",
+                     "telefono_contacto"]
 
-    def __init__(self, ci, nombre, apellido, telefono_contacto, correo_contacto):
+    def __init__(self, ci, nombre, apellido, telefono_contacto, correo_contacto=None):
         self.ci = ci
         self.nombre = nombre
         self.apellido = apellido
@@ -28,14 +30,25 @@ class Instructor:
             WHERE CI = %s
         """
         data = MySQLScriptsExecutor.runScriptToQueryDatabase(
-            script=script, params=(self.ci))
+            script=script, params=(self.ci,))
         if (data != None):
             return self.update()
         else:
             return self.insert()
 
     def insert(self) -> bool:
-        params = utilSql.get_params(value_to_insert=self)
-        script = utilSql.create_insert_query(
-            value_to_insert=self, table_name=self.table)
+        params = utilSql.getParams(newValue=self)
+        script = utilSql.createInsertQuery(
+            value_to_insert=self,
+            table_name=self.table
+        )
+        return MySQLScriptsExecutor.runScriptToModifyDatabase(script=script, params=params)
+
+    def update(self):
+        script, params = utilSql.createUpdateQuery(
+            value_to_insert=self,
+            tableName=self.table,
+            paramKeyWhere="ci",
+            paramValueWhere=self.ci   
+        )
         return MySQLScriptsExecutor.runScriptToModifyDatabase(script=script, params=params)

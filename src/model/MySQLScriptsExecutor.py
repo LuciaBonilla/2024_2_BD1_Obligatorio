@@ -1,6 +1,6 @@
 import os
 import mysql.connector
-
+from utils.utilSql import utilSql
 """
 Responsabilidad: Conectarse a la base de datos y ejecutar los scripts MySQL que le llegan.
 Si ejecuta scripts para consultar datos de la base, entonces retorna los datos consultados.
@@ -117,6 +117,7 @@ class MySQLScriptsExecutor:
         finally:
             # Asegura que la conexión se cierre en cualquier caso.
             cls.__endDatabaseConnection()
+        data = utilSql.removeNullValues(data)
         return data
 
     @classmethod

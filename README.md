@@ -112,17 +112,17 @@ Sugerencia usar Tables de [mui](https://mui.com/material-ui/react-table/)
 ### Create read update delete, Endpoints.
 
 - [ ] CRUD sobre Instructores. - Pedro
-- [ ] CRUD sobre Turnos.
-- [ ] CRUD sobre Actividades.
-- [ ] RU sobre Actividades.
-- [ ] RU sobre Clases, solo los campos, instructor, turno y agregar y quitar alumnos en las clases grupales.
-- [ ] Endpoint reportes
+- [ ] CRUD sobre Turnos. - Pedro
+- [ ] CRUD sobre Actividades. - Pedro 
+- [ ] RU sobre Actividades. - 
+- [ ] RU sobre Clases, solo los campos, instructor, turno y agregar y quitar alumnos en las clases grupales. 
+- [ ] Endpoint reportes - 
 
 ---
 
 ## BASE DATOS
 
-- [ ] Inserciones de datos base.
+- [x] Inserciones de datos base.
 - [ ] reportes
 
 ### Reportes:

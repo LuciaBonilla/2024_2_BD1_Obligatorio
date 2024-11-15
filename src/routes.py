@@ -41,12 +41,21 @@ def getAllTurnos():
     return TurnosController.getAllTurnos()
 
 # INSTRUCTORES
-
 @api.route("/instructores", methods=["GET"])
 def getAllInstructores():
     return instructoresController.getAllInstructores()
+
+@api.route("/instructores/<int:ci>", methods=["GET"])
+def getInstructorByCi(ci):
+    return instructoresController.getInstructorByCi(ci)
 
 @api.route("/instructores", methods=["POST"])
 def postInstructor():
     return instructoresController.createInstructor(request)
 
+@api.route("/instructores/<int:ci>", methods=["PUT"])
+def putInstructor(ci):
+    return instructoresController.updateInstructor(ci, request)
+
+# - **Endpoints:**
+#   - `DELETE /api/Instructores/<int:id>`: Delete an instructor by CI.
