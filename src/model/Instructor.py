@@ -7,6 +7,7 @@
 from model.MySQLScriptsExecutor import MySQLScriptsExecutor
 from utils.utilSql import utilSql
 
+
 class Instructor:
     table = "INSTRUCTORES"
 
@@ -26,7 +27,8 @@ class Instructor:
             FROM INSTRUCTORES
             WHERE CI = %s
         """
-        data = MySQLScriptsExecutor.runScriptToQueryDatabase(script=script, params=(self.ci))
+        data = MySQLScriptsExecutor.runScriptToQueryDatabase(
+            script=script, params=(self.ci))
         if (data != None):
             return self.update()
         else:
@@ -34,5 +36,6 @@ class Instructor:
 
     def insert(self) -> bool:
         params = utilSql.get_params(value_to_insert=self)
-        script = utilSql.insert_creator(value_to_insert=self, table_name=self.table)
+        script = utilSql.create_insert_query(
+            value_to_insert=self, table_name=self.table)
         return MySQLScriptsExecutor.runScriptToModifyDatabase(script=script, params=params)
