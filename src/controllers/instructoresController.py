@@ -1,4 +1,4 @@
-from flask import request, jsonify
+from flask import request, jsonify, current_app
 from model.Instructor import Instructor
 from model.InstructorManager import InstructorManager
 from model.DataFormatter import DataFormatter
@@ -65,6 +65,7 @@ class instructoresController:
                 telefono_contacto=data["telefono_contacto"],
                 correo_contacto=data.get("correo_contacto", None)
             )
+            current_app.logger.info(f"Creating new instructor: {instructor.__dict__}")
             result = instructor.save()
             if result:
                 return jsonify({"message": "Instructor created successfully"}), 201

@@ -1,6 +1,8 @@
 import os
 import mysql.connector
 from utils.utilSql import utilSql
+
+from flask import current_app
 """
 Responsabilidad: Conectarse a la base de datos y ejecutar los scripts MySQL que le llegan.
 Si ejecuta scripts para consultar datos de la base, entonces retorna los datos consultados.
@@ -117,7 +119,7 @@ class MySQLScriptsExecutor:
         finally:
             # Asegura que la conexión se cierre en cualquier caso.
             cls.__endDatabaseConnection()
-        data = utilSql.removeNullValues(data)
+        # data = utilSql.removeNullValues(data)
         return data
 
     @classmethod
@@ -143,7 +145,7 @@ class MySQLScriptsExecutor:
 
             # Crea el cursor para ejecutar el comando SQL.
             cursor = cls.__CONNECTION.cursor()
-
+            current_app.logger.info(f"Executing script: {script}")
             # Ejecuta el script de modificación.
             if (params is None):
                 cursor.execute(script)

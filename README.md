@@ -95,11 +95,11 @@ Se recomienda utilizar `docker-compose -d` para que sea detach, y luego `docker-
 
 - **Base URL:** `/api/Instructores`
 - **Endpoints:**
-  - `GET /api/Instructores`: Retrieve all instructors.
-  - `GET /api/Instructores/<int:id>`: Retrieve a single instructor by CI.
-  - `POST /api/Instructores: Create a new instructor.
-  - `PUT /api/Instructores/<int:id>`: Update an existing instructor by CI.
-  - `DELETE /api/Instructores/<int:id>`: Delete an instructor by CI.
+  - `GET /api/Instructores`: Retrieve all instructors. x 
+  - `GET /api/Instructores/<int:id>`: Retrieve a single instructor by CI. x 
+  - `POST /api/Instructores`: Create a new instructor. x 
+  - `PUT /api/Instructores/<int:id>`: Update an existing instructor by CI. x 
+  - `DELETE /api/Instructores/<int:id>`: Delete an instructor by CI. 
 
 ### 2. **Schedules (Turnos)**
 

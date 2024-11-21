@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 
 # CONTROLADORES.
 from controllers.actividadesController import ActividadesController
@@ -7,6 +7,8 @@ from controllers.instructoresController import instructoresController
 
 # MODEL PARA CHECKEAR CONEXIÓN A LA BASE DE DATOS.
 from model.MySQLScriptsExecutor import MySQLScriptsExecutor
+
+
 
 # Crea un Blueprint para organizar las rutas
 api = Blueprint("api", __name__)
@@ -51,10 +53,14 @@ def getInstructorByCi(ci):
 
 @api.route("/instructores", methods=["POST"])
 def postInstructor():
+    current_app.logger.info(f"Creating new instructor: {request}")
+
     return instructoresController.createInstructor(request)
 
 @api.route("/instructores/<int:ci>", methods=["PUT"])
 def putInstructor(ci):
+    current_app.logger.info(f"Updating instructor with CI: {ci}")
+
     return instructoresController.updateInstructor(ci, request)
 
 # - **Endpoints:**
