@@ -62,17 +62,17 @@ Se recomienda utilizar `docker-compose -d` para que sea detach, y luego `docker-
 
 ### Logica espacial
 
-- [ ] En las clases instructor y alumno no puede estar en 2 clases del mismo turno.
-- [ ] En el horario de clases estas no pueden ser modificadas o eliminadas.
+- [ ] En las clases, instructor y alumno no puede estar en 2 clases del mismo turno.
+- [ ] En el horario de clases, estas no pueden ser modificadas o eliminadas.
 
 ### Create read update delete, Endpoints.
 
-- [ ] CRUD sobre Instructores. - Pedro
-- [ ] CRUD sobre Turnos. - Pedro
-- [ ] CRUD sobre Alumnos. - Pedro 
-- [ ] RU sobre Actividades. - 
+- [x] CRUD sobre Instructores.
+- [ ] CRUD sobre Turnos.
+- [ ] CRUD sobre Alumnos.
+- [ ] RU sobre Actividades.
 - [ ] RU sobre Clases, solo los campos, instructor, turno y agregar y quitar alumnos en las clases grupales. 
-- [ ] Endpoint reportes - 
+- [ ] Endpoint reportes.
 
 ---
 
@@ -99,7 +99,7 @@ Se recomienda utilizar `docker-compose -d` para que sea detach, y luego `docker-
   - `GET /api/Instructores/<int:id>`: Retrieve a single instructor by CI. x 
   - `POST /api/Instructores`: Create a new instructor. x 
   - `PUT /api/Instructores/<int:id>`: Update an existing instructor by CI. x 
-  - `DELETE /api/Instructores/<int:id>`: Delete an instructor by CI. 
+  - `DELETE /api/Instructores/<int:id>`: Delete an instructor by CI. x
 
 ### 2. **Schedules (Turnos)**
 

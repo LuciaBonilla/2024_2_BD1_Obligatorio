@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 
 # CONTROLADORES.
-from controllers.InstructoresController import InstructoresController
+from controllers.instructoresController import InstructoresController
 
 # MODEL PARA CHECKEAR CONEXIÓN A LA BASE DE DATOS.
 from model.MySQLScriptRunner import MySQLScriptRunner
