@@ -61,9 +61,9 @@ CREATE TABLE CLASES (
     id_actividad TINYINT UNSIGNED NOT NULL,
     dictada BOOL NOT NULL,
     
-    FOREIGN KEY (ci_instructor) REFERENCES INSTRUCTORES(ci), -- FK1
-    FOREIGN KEY (id_turno) REFERENCES TURNOS(id), -- FK2
-    FOREIGN KEY (id_actividad) REFERENCES ACTIVIDADES(id) -- FK3
+    FOREIGN KEY (ci_instructor) REFERENCES INSTRUCTORES(ci) ON DELETE CASCADE, -- FK1
+    FOREIGN KEY (id_turno) REFERENCES TURNOS(id) ON DELETE CASCADE, -- FK2
+    FOREIGN KEY (id_actividad) REFERENCES ACTIVIDADES(id) ON DELETE CASCADE -- FK3
 );
 
 CREATE TABLE EQUIPAMIENTOS (
@@ -73,17 +73,17 @@ CREATE TABLE EQUIPAMIENTOS (
 	descripcion VARCHAR(100) NOT NULL,
     costo MEDIUMINT UNSIGNED NOT NULL,
     
-    FOREIGN KEY (id_actividad) REFERENCES ACTIVIDADES(id) -- FK
+    FOREIGN KEY (id_actividad) REFERENCES ACTIVIDADES(id) ON DELETE CASCADE -- FK
 );
 
 CREATE TABLE ALUMNOS_CLASES (
 	id_clase TINYINT UNSIGNED NOT NULL,
     ci_alumno INTEGER UNSIGNED NOT NULL CHECK (ci_alumno <= 99999999),
-    id_equipamiento TINYINT UNSIGNED NOT NULL,
+    id_equipamiento TINYINT UNSIGNED,
     
-    PRIMARY KEY (id_clase, ci_alumno, id_equipamiento),  -- Clave primaria compuesta
+    PRIMARY KEY (id_clase, ci_alumno),  -- Clave primaria compuesta
 
-    FOREIGN KEY (id_clase) REFERENCES CLASES(id), -- FK1
-    FOREIGN KEY (ci_alumno) REFERENCES ALUMNOS(ci), -- FK2
-    FOREIGN KEY (id_equipamiento) REFERENCES EQUIPAMIENTOS(id) -- FK3
+    FOREIGN KEY (id_clase) REFERENCES CLASES(id) ON DELETE CASCADE, -- FK1
+    FOREIGN KEY (ci_alumno) REFERENCES ALUMNOS(ci) ON DELETE CASCADE, -- FK2
+    FOREIGN KEY (id_equipamiento) REFERENCES EQUIPAMIENTOS(id) ON DELETE CASCADE -- FK3
 );
