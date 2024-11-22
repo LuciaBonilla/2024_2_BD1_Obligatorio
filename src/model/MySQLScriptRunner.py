@@ -1,16 +1,17 @@
 import os
 import mysql.connector
-from utils.utilSql import utilSql
 
-from flask import current_app
-"""
-Responsabilidad: Conectarse a la base de datos y ejecutar los scripts MySQL que le llegan.
-Si ejecuta scripts para consultar datos de la base, entonces retorna los datos consultados.
-Si ejecuta scripts para modificar la base, entonces retorna el resultado de la operación (exitosa/no exitosa).
-"""
-
-
-class MySQLScriptsExecutor:
+class MySQLScriptRunner:
+    """
+        Responsabilidad: Conectarse a la base de datos, y ejecutar los scripts MySQL e inyectar los valores que le llegan.
+        
+        Si ejecuta scripts para consultar datos de la base, entonces retorna los datos consultados.
+        
+        Si ejecuta scripts para modificar la base, entonces retorna el resultado de la operación (exitosa/no exitosa).
+        
+        Estado: clase completada.
+    """
+    
     # ->>> ATRIBUTOS DE CLASE.
 
     # Obtiene las variables de entorno para la base de datos, definidas en docker-compose.yml.
@@ -25,14 +26,14 @@ class MySQLScriptsExecutor:
 
     # ->>> MÉTODOS DE CLASE.
     # cls se refiere a la clase, no a una instancia; permite obtener los atributos y llamar a los métodos de clase.
-    # cls se debe colocar en todos los métodos de clase como parámetro del método
+    # cls se debe colocar en todos los métodos de clase como parámetro del método.
 
     @classmethod
-    def __startDatabaseConnection(cls):
+    def __start_database_connection(cls) -> None:
         """
-        Establece una conexión a la base de datos.
+            Establece una conexión a la base de datos.
 
-        Estado: método completado.
+            Estado: método completado.
         """
         if (cls.__CONNECTION is None or not cls.__CONNECTION.is_connected()):
             try:
@@ -47,55 +48,56 @@ class MySQLScriptsExecutor:
                 cls.__CONNECTION = None
 
     @classmethod
-    def __endDatabaseConnection(cls):
+    def __end_database_connection(cls) -> None:
         """
-        Apaga la conexión con la base de datos.
+            Apaga la conexión con la base de datos.
 
-        Estado: método completado.
+            Estado: método completado.
         """
         if (cls.__CONNECTION and cls.__CONNECTION.is_connected()):
             cls.__CONNECTION.close()
             cls.__CONNECTION = None
 
     @classmethod
-    def getDatabaseConnectionStatus(cls):
+    def get_database_connection_status(cls) -> bool:
         """
-        Dice si la conexión a la base de datos fue exitosa.
+            Dice si la conexión a la base de datos fue exitosa.
 
-        Retorna:
-            True si la conexión es exitosa, False en caso contrario.
+            Retorna:
+                - `True` si la conexión es exitosa, `False` en caso contrario.
 
-        Estado: método completado.
+            Estado: método completado.
         """
         status = None
         try:
-            cls.__startDatabaseConnection()
+            cls.__start_database_connection()
             status = cls.__CONNECTION is not None and cls.__CONNECTION.is_connected()
         except mysql.connector.Error:
             status = False
         finally:
-            cls.__endDatabaseConnection()
+            cls.__end_database_connection()
         return status
 
     @classmethod
-    def runScriptToQueryDatabase(cls, script, params=None):
+    def run_script_to_query_database(cls, script: str, params: tuple =None) -> list[dict]:
         """
-        Ejecuta un script de MySQL con el objetivo de consultar datos de la base.
+            Ejecuta un script de MySQL con el objetivo de consultar datos de la base.
 
-        Entradas:
-            script: El script MySQL a ejecutar.
-            params: Tupla que contiene los valores que reemplazarán los placeholders (%s) en la consulta SQL.
-            El uso de params permite que el controlador de MySQL maneje estos valores de manera segura, protegiendo contra inyección SQL.
+            Entradas:
+                - `script`: El script MySQL a ejecutar.
+                - `params`: Tupla que contiene los valores que reemplazarán los placeholders `%s)`en la consulta SQL.
+                
+            El uso de `params` permite que el controlador de MySQL maneje estos valores de manera segura, protegiendo contra inyección SQL.
 
-        Retorna:
-            Los datos consultados o None.
+            Retorna:
+                - Los datos consultados (lista de diccionarios, donde cada diccionario es un registro de la tabla) o `None`.
 
-        Estado: método completado.
+            Estado: método completado.
         """
         data = None
         try:
             # Establece la conexión con la base de datos.
-            cls.__startDatabaseConnection()
+            cls.__start_database_connection()
 
             # Crea un objeto cursor para ejecutar el script SQL.
             cursor = cls.__CONNECTION.cursor(dictionary=True)
@@ -118,34 +120,34 @@ class MySQLScriptsExecutor:
             print(f"Error al ejecutar el script de consulta: {error}")
         finally:
             # Asegura que la conexión se cierre en cualquier caso.
-            cls.__endDatabaseConnection()
-        # data = utilSql.removeNullValues(data)
+            cls.__end_database_connection()
         return data
 
     @classmethod
-    def runScriptToModifyDatabase(cls, script, params=None) -> bool:
+    def run_script_to_modify_database(cls, script: str, params: tuple =None) -> bool:
         """
-        Ejecuta un script de MySQL con el objetivo de modificar datos en la base de datos.
-        Puede realizar operaciones como, por ejemplo, INSERT, UPDATE o DELETE.
+            Ejecuta un script de MySQL con el objetivo de modificar datos en la base de datos.
+            Puede realizar operaciones como, por ejemplo, INSERT, UPDATE o DELETE.
 
-        Entradas:
-            script: El script MySQL a ejecutar.
-            params: Tupla que contiene los valores que reemplazarán los placeholders (%s) en la consulta SQL.
-            El uso de params permite que el controlador de MySQL maneje estos valores de manera segura, protegiendo contra inyección SQL.
+            Entradas:
+                - `script`: El script MySQL a ejecutar.
+                - `params`: Tupla que contiene los valores que reemplazarán los placeholders `%s` en la consulta SQL.
+                
+            El uso de `params` permite que el controlador de MySQL maneje estos valores de manera segura, protegiendo contra inyección SQL.
 
-        Retorna:
-            True si la operación fue exitosa, y False en caso de error.
+            Retorna:
+                - `True` si la operación fue exitosa, y `False` en caso de error.
 
-        Estado: método terminado.
+            Estado: método terminado.
         """
         result = None
         try:
             # Establece la conexión con la base de datos.
-            cls.__startDatabaseConnection()
+            cls.__start_database_connection()
 
             # Crea el cursor para ejecutar el comando SQL.
             cursor = cls.__CONNECTION.cursor()
-            current_app.logger.info(f"Executing script: {script}")
+
             # Ejecuta el script de modificación.
             if (params is None):
                 cursor.execute(script)
@@ -168,5 +170,5 @@ class MySQLScriptsExecutor:
             result = False
         finally:
             # Asegura que la conexión se cierre en cualquier caso.
-            cls.__endDatabaseConnection()
+            cls.__end_database_connection()
         return result

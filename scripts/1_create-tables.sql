@@ -1,7 +1,5 @@
-USE ucu_snow_sports;
-SET NAMES "utf8mb4";
-
-ALTER DATABASE ucu_snow_sports CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- Para aceptar letras con acentos.
+ALTER DATABASE ucu_snow_sports DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 
 /*
 RANGOS NUMÉRICOS USADOS
@@ -15,48 +13,48 @@ FORMATO DE DATE: YYYY-MM-DD
 
 -- CREACIÓN DE LAS 8 TABLAS.
 CREATE TABLE TURNOS (
-    id TINYINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
+    id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
     
 	hora_inicio TIME NOT NULL,
     hora_fin TIME NOT NULL
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 CREATE TABLE ACTIVIDADES (
-	id TINYINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
+	id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
     
     nombre VARCHAR(30) UNIQUE NOT NULL,
     descripcion VARCHAR(100),
     costo MEDIUMINT UNSIGNED NOT NULL,
     edad_minima TINYINT UNSIGNED NOT NULL
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 CREATE TABLE ALUMNOS (
-	ci INTEGER UNSIGNED UNIQUE NOT NULL PRIMARY KEY CHECK (ci <= 99999999), -- PK
+	ci INTEGER UNSIGNED NOT NULL PRIMARY KEY CHECK (ci <= 99999999), -- PK
     
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(30) NOT NULL,
     fecha_nacimiento DATE NOT NULL,
     telefono_contacto VARCHAR(20) NOT NULL, -- Al menos el teléfono como información de contacto.
 	correo_contacto VARCHAR(40) CHECK (correo_contacto LIKE '%@%')
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 CREATE TABLE INSTRUCTORES (
-	ci INTEGER UNSIGNED UNIQUE NOT NULL PRIMARY KEY CHECK (ci <= 99999999), -- PK
+	ci INTEGER UNSIGNED NOT NULL PRIMARY KEY CHECK (ci <= 99999999), -- PK
     
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(30) NOT NULL,
     telefono_contacto VARCHAR(20) NOT NULL, -- Al menos el teléfono como información de contacto.
 	correo_contacto VARCHAR(40) CHECK (correo_contacto LIKE '%@%')
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 CREATE TABLE LOGIN (
-	correo VARCHAR(40) UNIQUE NOT NULL PRIMARY KEY CHECK (correo LIKE '%@%'), -- PK
+	correo VARCHAR(40) NOT NULL PRIMARY KEY CHECK (correo LIKE '%@%'), -- PK
     
     contrasena VARCHAR(40) NOT NULL
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 CREATE TABLE CLASES (
-	id TINYINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
+	id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
     
     ci_instructor INTEGER UNSIGNED NOT NULL CHECK (ci_instructor <= 99999999),
     id_turno TINYINT UNSIGNED NOT NULL,
@@ -66,24 +64,26 @@ CREATE TABLE CLASES (
     FOREIGN KEY (ci_instructor) REFERENCES INSTRUCTORES(ci), -- FK1
     FOREIGN KEY (id_turno) REFERENCES TURNOS(id), -- FK2
     FOREIGN KEY (id_actividad) REFERENCES ACTIVIDADES(id) -- FK3
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 CREATE TABLE EQUIPAMIENTOS (
-	id TINYINT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
+	id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
     
     id_actividad TINYINT UNSIGNED NOT NULL,
 	descripcion VARCHAR(100) NOT NULL,
     costo MEDIUMINT UNSIGNED NOT NULL,
     
     FOREIGN KEY (id_actividad) REFERENCES ACTIVIDADES(id) -- FK
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);
 
 CREATE TABLE ALUMNOS_CLASES (
 	id_clase TINYINT UNSIGNED NOT NULL,
     ci_alumno INTEGER UNSIGNED NOT NULL CHECK (ci_alumno <= 99999999),
     id_equipamiento TINYINT UNSIGNED NOT NULL,
     
+    PRIMARY KEY (id_clase, ci_alumno, id_equipamiento),  -- Clave primaria compuesta
+
     FOREIGN KEY (id_clase) REFERENCES CLASES(id), -- FK1
     FOREIGN KEY (ci_alumno) REFERENCES ALUMNOS(ci), -- FK2
     FOREIGN KEY (id_equipamiento) REFERENCES EQUIPAMIENTOS(id) -- FK3
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+);

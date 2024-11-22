@@ -1,14 +1,10 @@
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, jsonify
 
 # CONTROLADORES.
-from controllers.actividadesController import ActividadesController
-from controllers.turnosController import TurnosController
-from controllers.instructoresController import instructoresController
+from controllers.InstructoresController import InstructoresController
 
 # MODEL PARA CHECKEAR CONEXIÓN A LA BASE DE DATOS.
-from model.MySQLScriptsExecutor import MySQLScriptsExecutor
-
-
+from model.MySQLScriptRunner import MySQLScriptRunner
 
 # Crea un Blueprint para organizar las rutas
 api = Blueprint("api", __name__)
@@ -21,47 +17,34 @@ def home():
 # PARA CHECKEAR CONEXIÓN A LA BASE DE DATOS.
 @api.route("/ping", methods=["GET"])
 def checkDatabaseConnection():
-    status = MySQLScriptsExecutor.getDatabaseConnectionStatus()
+    status = MySQLScriptRunner.get_database_connection_status()
     
-    if status:
+    if (status):
         return jsonify({"message": "Conexión exitosa a la base de datos"}), 200
     else:
         return jsonify({"message": "Conexión NO exitosa a la base de datos"}), 500
 
 # ACTIVIDADES.
-@api.route("/actividades", methods=["GET"])
-def getAllActividades():
-    return ActividadesController.getAllActividades()
-
-@api.route("/actividades", methods=["POST"])
-def postActividad():
-    return ActividadesController.createActividad(request)
 
 # TURNOS.
-@api.route("/turnos", methods=["GET"])
-def getAllTurnos():
-    return TurnosController.getAllTurnos()
 
 # INSTRUCTORES
 @api.route("/instructores", methods=["GET"])
-def getAllInstructores():
-    return instructoresController.getAllInstructores()
+def get_all_instructores():
+    return InstructoresController.get_all_instructores()
 
 @api.route("/instructores/<int:ci>", methods=["GET"])
-def getInstructorByCi(ci):
-    return instructoresController.getInstructorByCi(ci)
+def get_instructor_by_ci(ci):
+    return InstructoresController.get_instructor_by_ci(ci=ci)
 
 @api.route("/instructores", methods=["POST"])
-def postInstructor():
-    current_app.logger.info(f"Creating new instructor: {request}")
+def post_instructor():
+    return InstructoresController.create_instructor()
 
-    return instructoresController.createInstructor(request)
+@api.route("/instructores/<int:ci>", methods=["PATCH"])
+def put_instructor(ci):
+    return InstructoresController.update_instructor(ci=ci)
 
-@api.route("/instructores/<int:ci>", methods=["PUT"])
-def putInstructor(ci):
-    current_app.logger.info(f"Updating instructor with CI: {ci}")
-
-    return instructoresController.updateInstructor(ci, request)
-
-# - **Endpoints:**
-#   - `DELETE /api/Instructores/<int:id>`: Delete an instructor by CI.
+@api.route("/instructores/<int:ci>", methods=["DELETE"])
+def delete_instructor(ci):
+    return InstructoresController.delete_instructor(ci=ci)
