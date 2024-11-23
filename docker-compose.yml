@@ -1,9 +1,26 @@
 services:
+  # Dockerización para el frontend. Se comenta mientras
+  # estamos en desarollo porque no funciona
+  # correctamente con el hot-reload de React.
+  # frontend:
+  #   build:
+  #     context: ./frontend/ucu-web
+  #     dockerfile: ../Dockerfile
+  #   container_name: ucu_snow_sports_frontend
+  #   ports:
+  #     - "5173:5173"
+  #   depends_on:
+  #     - app
+  #   volumes:
+  #     - ./frontend/ucu-web:/app
+  #   networks:
+  #     - ucu_network
+
   # Dockerización para la app de backend.
   app:
     # Construye el contenedor utilizando el Dockerfile en el directorio local. El contexto del build es el directorio local "./src".
     build:
-      context: ./src
+      context: ./backend/src
       dockerfile: ../Dockerfile
     # Nombre del contenedor.
     container_name: ucu_snow_sports_app
@@ -23,7 +40,7 @@ services:
     # Volume para que los archivos del host se sincronicen con el contenedor.
     # Pasa todos los archivos del directorio local "./src" al directorio "./src" dentro del contenedor.
     volumes:
-      - ./src:/src
+      - ./backend/src:/src
 
     # El servicio de la app comparte la red "ucu_network" con el servicio de la base de datos.
     networks:

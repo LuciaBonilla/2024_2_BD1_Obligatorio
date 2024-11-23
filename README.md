@@ -29,6 +29,8 @@ Acciones: Controla la lógica de la aplicación, maneja las solicitudes del usua
 
 ## Estructura de carpetas
 
+- Usamos una monorepo para todo el projecto, en este tenemos el backend y el frontend. Usamos docker para iniciar todo.
+
 - En el directorio principal están los archivos necesarios (docker-compose.yml y Dockerfile) para levantar la base de datos y la aplicación en contenedores Docker.
 
 - En [src](src) está la aplicación de backend ([app](src/app.py); aplicación Flask), junto a:
@@ -71,7 +73,7 @@ Se recomienda utilizar `docker-compose -d` para que sea detach, y luego `docker-
 - [ ] CRUD sobre Turnos.
 - [ ] CRUD sobre Alumnos.
 - [ ] RU sobre Actividades.
-- [ ] RU sobre Clases, solo los campos, instructor, turno y agregar y quitar alumnos en las clases grupales. 
+- [ ] RU sobre Clases, solo los campos, instructor, turno y agregar y quitar alumnos en las clases grupales.
 - [ ] Endpoint reportes.
 
 ---
@@ -95,10 +97,10 @@ Se recomienda utilizar `docker-compose -d` para que sea detach, y luego `docker-
 
 - **Base URL:** `/api/Instructores`
 - **Endpoints:**
-  - `GET /api/Instructores`: Retrieve all instructors. x 
-  - `GET /api/Instructores/<int:id>`: Retrieve a single instructor by CI. x 
-  - `POST /api/Instructores`: Create a new instructor. x 
-  - `PUT /api/Instructores/<int:id>`: Update an existing instructor by CI. x 
+  - `GET /api/Instructores`: Retrieve all instructors. x
+  - `GET /api/Instructores/<int:id>`: Retrieve a single instructor by CI. x
+  - `POST /api/Instructores`: Create a new instructor. x
+  - `PUT /api/Instructores/<int:id>`: Update an existing instructor by CI. x
   - `DELETE /api/Instructores/<int:id>`: Delete an instructor by CI. x
 
 ### 2. **Schedules (Turnos)**
