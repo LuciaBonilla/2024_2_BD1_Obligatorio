@@ -2,19 +2,20 @@ from model.MySQLScriptRunner import MySQLScriptRunner
 from utils.MySQLScriptGenerator import MySQLScriptGenerator
 from utils.DataFormatter import DataFormatter
 
-class Instructor:
+class Alumno:
     """
-        Representa la entidad Instructor.
+        Representa la entidad Alumno.
         
         Estado: clase terminada.
     """
-    table_name = "INSTRUCTORES"
-    values_needed = ["ci", "nombre", "apellido", "telefono_contacto"]
+    table_name = "ALUMNOS"
+    values_needed = ["ci", "nombre", "apellido", "fecha_nacimiento", "telefono_contacto"]
     
-    def __init__(self, ci: int, nombre: str, apellido: str, telefono_contacto: str, correo_contacto: str =None):
+    def __init__(self, ci: int, nombre: str, apellido: str, fecha_nacimiento: str, telefono_contacto: str, correo_contacto: str =None):
         self.ci = ci
         self.nombre = nombre
         self.apellido = apellido
+        self.fecha_nacimiento = fecha_nacimiento
         self.telefono_contacto = telefono_contacto
         self.correo_contacto = correo_contacto
 
@@ -35,9 +36,7 @@ class Instructor:
 
     def update(self) -> bool:
         """
-            Intenta actualizar un registro asociado en la tabla.
-            
-            Nota: el atributo de filtrado es `ci`.
+            Intenta actualizar su registro asociado en la tabla.
                 
             Salida:
                 - `True` si la operación fue exitosa, en caso contrario, `False`.
@@ -54,10 +53,8 @@ class Instructor:
     
     def delete(self) -> bool:
         """
-            Intenta eliminar un registro asociado en la tabla.
+            Intenta eliminar su registro asociado en la tabla.
             
-            Nota: el atributo de filtrado es `ci`.
-                
             Salida:
                 - `True` si la operación fue exitosa, en caso contrario, `False`.
                 
@@ -71,9 +68,9 @@ class Instructor:
         return MySQLScriptRunner.run_script_to_modify_database(script=script, params=params)
     
     @classmethod
-    def get_instructor_by_ci(cls, ci: int) -> dict:
+    def get_alumno_by_ci(cls, ci: int) -> dict:
         """
-            Retorna los datos de un instructor en un diccionario.
+            Retorna los datos de un alumno en un diccionario.
             
             Entrada:
                 - `ci`: cédula de identidad.
@@ -81,7 +78,7 @@ class Instructor:
             Salida:
                 - `None`, si no encontró nada.
                 - `duplicated` si encontró más de un registro correspondiente a esa cédula.
-                - un diccionario con la info del instructor.
+                - un diccionario con la info del alumno.
                 
             Estado: método terminado.
         """
@@ -100,9 +97,9 @@ class Instructor:
             return "duplicated"
     
     @classmethod
-    def get_all_instructores(cls) -> list[dict]:
+    def get_all_alumnos(cls) -> list[dict]:
         """
-            Retorna todos los instructores como una lista de diccionarios, donde cada diccionario contiene la info de un instructor.
+            Retorna todos los alumnos como una lista de diccionarios, donde cada diccionario contiene la info de un alumno.
             
             Salida:
                 - `None` si no encuentra nada, en caso contrario, la lista de diccionarios.

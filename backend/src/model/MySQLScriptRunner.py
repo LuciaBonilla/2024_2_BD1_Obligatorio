@@ -63,7 +63,7 @@ class MySQLScriptRunner:
         """
             Dice si la conexión a la base de datos fue exitosa.
 
-            Retorna:
+            Salida:
                 - `True` si la conexión es exitosa, `False` en caso contrario.
 
             Estado: método completado.
@@ -84,13 +84,13 @@ class MySQLScriptRunner:
             Ejecuta un script de MySQL con el objetivo de consultar datos de la base.
 
             Entradas:
-                - `script`: El script MySQL a ejecutar.
-                - `params`: Tupla que contiene los valores que reemplazarán los placeholders `%s)`en la consulta SQL.
+                - `script`: el script MySQL a ejecutar.
+                - `params`: tupla que contiene los valores que reemplazarán los placeholders `%s` en la consulta MySQL.
                 
             El uso de `params` permite que el controlador de MySQL maneje estos valores de manera segura, protegiendo contra inyección SQL.
 
-            Retorna:
-                - Los datos consultados (lista de diccionarios, donde cada diccionario es un registro de la tabla) o `None`.
+            Salida:
+                - los datos consultados (lista de diccionarios, donde cada diccionario es un registro de la tabla) o `None`.
 
             Estado: método completado.
         """
@@ -127,15 +127,16 @@ class MySQLScriptRunner:
     def run_script_to_modify_database(cls, script: str, params: tuple =None) -> bool:
         """
             Ejecuta un script de MySQL con el objetivo de modificar datos en la base de datos.
+            
             Puede realizar operaciones como, por ejemplo, INSERT, UPDATE o DELETE.
 
             Entradas:
-                - `script`: El script MySQL a ejecutar.
-                - `params`: Tupla que contiene los valores que reemplazarán los placeholders `%s` en la consulta SQL.
+                - `script`: el script MySQL a ejecutar.
+                - `params`: tupla que contiene los valores que reemplazarán los placeholders `%s` en la consulta MySQL.
                 
             El uso de `params` permite que el controlador de MySQL maneje estos valores de manera segura, protegiendo contra inyección SQL.
 
-            Retorna:
+            Salida:
                 - `True` si la operación fue exitosa, y `False` en caso de error.
 
             Estado: método terminado.

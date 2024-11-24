@@ -17,10 +17,14 @@ class Validator:
                 
             Salida:
                 - `True` si el usuario es un administrador, en caso contrario, `False`.
+                
+            Estado: método terminado.
         """
         if ("login" not in body_request):
-            if ("correo" not in body_request["login"]) or ("contrasena" not in body_request["login"]):
-                return False
+            return False
+
+        if ("correo" not in body_request["login"]) or ("contrasena" not in body_request["login"]):
+            return False
         
         data = MySQLScriptRunner.run_script_to_query_database(
             script="""
