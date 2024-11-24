@@ -1,51 +1,80 @@
 # Endpoints
 
-### . **Instructors (Instructores)**
+- URI BASE: `http://localhost:3006/api`
 
-- **Base URL:** `/api/Instructores`
+### 0. De comprobación
+
+- `/`: Muestra un mensaje de bienvenida.
+- `/ping`: Comprueba si la conexión con la base de datos se puede establecer.
+
+### 1. **Instructors (Instructores)** [x]
+
+- **Base URI:** `/instructores`
 - **Endpoints:**
-  - `GET /api/Instructores`: Retrieve all instructors. [x]
-  - `GET /api/Instructores/<int:id>`: Retrieve a single instructor by CI. [x]
-  - `POST /api/Instructores`: Create a new instructor. [x]
-  - `PUT /api/Instructores/<int:id>`: Update an existing instructor by CI. [x]
-  - `DELETE /api/Instructores/<int:id>`: Delete an instructor by CI. [x]
+  - `GET /instructores`: Retorna todos los instructores. [x]
+  - `GET /instructores/<int:ci>`: Retorna un único instructor por CI. [x]
+  - `POST /instructores`: Crea un nuevo instructor. Retorna CI. [x]
+  - `PATCH /instructores/<int:ci>`: Actualiza un instructor por CI. Retorna CI. [x]
+  - `DELETE /instructores/<int:ci>`: Elimina un instructor por CI. [x]
 
-### 2. **Schedules (Turnos)**
+### 2. **Schedules (Turnos)** [x]
 
-- **Base URL:** `/api/turnos`
+- **Base URI:** `/turnos`
 - **Endpoints:**
-  - `GET /api/turnos`: Retrieve all schedules.
-  - `GET /api/turnos/<int:id>`: Retrieve a single schedule by ID.
-  - `POST /api/turnos`: Create a new schedule. returns the id
-  - `PUT /api/turnos/<int:id>`: Update an existing schedule by ID.
-  - `DELETE /api/turnos/<int:id>`: Delete a schedule by ID.
+  - `GET /turnos`: Retorna todos los turnos. [x]
+  - `GET /turnos/<int:id>`: Retorna un único turno por ID. [x]
+  - `POST /turnos`: Crea un nuevo turno. [x]
+  - `PATCH /turnos/<int:id>`: Actualiza un turno por ID. Retorna ID. [x]
+  - `DELETE /turnos/<int:id>`: Elimina un turno por ID. [x]
 
-### 3. **Activities (Actividades)**
+### 3. **Activities (Actividades)** [x]
 
-- **Base URL:** `/api/actividades`
+- **Base URI:** `/actividades`
 - **Endpoints:**
-  - `GET /api/actividades`: Retrieve all activities.
-  - `GET /api/actividades/<int:id>`: Retrieve a single activity by ID.
-  - `PUT /api/actividades/<int:id>`: Update an existing activity by ID.
+  - `GET /actividades`: Retorna todas las actividades. [x]
+  - `GET /actividades/<int:id>`: Retorna una única actividad por ID. [x]
+  - `PATCH /actividades/<int:id>`: Actualiza una actividad por ID. Retorna ID. [x]
 
-### 4. **Classes (Clases)**
+### 4. **Students (Alumnos)** [x]
 
-- **Base URL:** `/api/clases`
+- **Base URI:** `/alumnos`
 - **Endpoints:**
-  - `GET /api/clases`: Retrieve all classes.
-  - `GET /api/clases/<int:id>`: Retrieve a single class by ID.
-  - `PUT /api/clases/<int:id>`: Update fields for instructor, schedule, or modify enrolled students in group classes.
+  - `GET /alumnos`: Retorna todos los alumnos. [x]
+  - `GET /alumnos/<int:ci>`: Retorna un único alumno por CI. [x]
+  - `POST /alumnos`: Crea un nuevo alumno. Retorna CI. [x]
+  - `PATCH /alumnos/<int:ci>`: Actualiza un alumno por CI. Retorna CI. [x]
+  - `DELETE /alumnos/<int:ci>`: Elimina un alumno por CI. [x]
 
-#### Student Management in Group Classes
+### 5. **Classes (Clases)** [x]
 
-- **Adding a alumnos to a class:** `POST /api/classes/<int:class_id>/alumnos/<int:alumnos_id>`
-- **Removing a alumnos from a class:** `DELETE /api/classes/<int:class_id>/alumnos/<int:alumnos_id>`
-- **Adding a instructor to a class:** `POST /api/classes/<int:class_id>/instructor/<int:instructor_id>`
-- **Removing a instructor from a class:** `DELETE /api/classes/<int:class_id>/instructor/<int:instructor_id>`
+- **Base URI:** `/clases`
+- **Endpoints:**
+  - `GET /clases`: Retorna todas los clases. [x]
+  - `GET /clases/<int:ci>`: Retorna una única clase por ID. [x]
+  - `POST /clases`: Crea un nueva clase. [x]
+  - `PATCH /clases/<int:ci>`: Actualiza una clase por ID. Retorna ID. [x]
+  - `DELETE /clases/<int:ci>`: Elimina una clase por ID. [x]
 
-### Reportes
+### 6. **Assistances (Asistencias)** [x]
 
-- **base URL**: `/api/reportes`
-  - **Actividad con más ingresos**: `/api/reportes/actividad_mas_ingresos`
-  - **Actividad con más alumnos**: `/api/reportes/actividad_mas_alumnos`
-  - **Turnos con mas clases dictadas**: `/api/reportes/turnos_mas_frecuentes`
+- **Base URI:** `/asistencias`
+- **Endpoints:**
+  - `GET /asistencias`: Retorna todas las asistencias. [x]
+  - `GET /asistencias/clases/<int:id>/alumnos/<int:ci>`: Retorna una única asistencia por ID de la clase y CI del alumno. [x]
+  - `POST /asistencias`: Crea un nueva asistencia. Retorna ID de la clase, CI del alumno e ID del equipamiento. [x]
+  - `PATCH /asistencias/clases/<int:id>/alumnos/<int:ci>`: Actualiza una asistencia por ID de la clase y CI del alumno. Retorna ID de la clase, CI del alumno e ID del equipamiento. [x]
+  - `DELETE /asistencias/clases/<int:id>/alumnos/<int:ci>`: Elimina una clase por ID de la clase y CI del alumno. [x]
+
+### 7. **Equipments (Equipamientos)** [x]
+
+- **Endpoints:**
+  - `GET /equipamientos`: Retorna todos los equipamientos. [x]
+  - `GET /equipamientos/<int:id>`: Retorna un único equipamiento por ID. [x]
+
+### Reportes [ ]
+
+- **Base URI**: `/reportes`
+- **Endpoints:**
+  - **Actividad con más ingresos**: `/reportes/actividad_mas_ingresos`
+  - **Actividad con más alumnos**: `/reportes/actividad_mas_alumnos`
+  - **Turnos con mas clases dictadas**: `/reportes/turnos_mas_frecuentes`
