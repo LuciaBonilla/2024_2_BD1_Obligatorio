@@ -18,12 +18,12 @@ services:
 
   # Dockerización para la app de backend.
   app:
-    # Construye el contenedor utilizando el Dockerfile en el directorio local. El contexto del build es el directorio local "./src".
+    # Construye el contenedor utilizando el Dockerfile en el directorio local. El contexto del build es el directorio local "./backend/src".
     build:
       context: ./backend/src
-      dockerfile: ../Dockerfile
+      dockerfile: ../Dockerfile # Un directorio atrás de "./src".
     # Nombre del contenedor.
-    container_name: ucu_snow_sports_app
+    container_name: ucu_snow_sports_backend
     # puerto_host:puerto_container. Expone el puerto 5000 del contenedor en el puerto 3006 del host.
     ports:
       - "3006:5000"
@@ -38,7 +38,7 @@ services:
       - DB_PASSWORD=root_password
       - DB_NAME=ucu_snow_sports
     # Volume para que los archivos del host se sincronicen con el contenedor.
-    # Pasa todos los archivos del directorio local "./src" al directorio "./src" dentro del contenedor.
+    # Pasa todos los archivos del directorio local "./backend/src" al directorio "./src" dentro del contenedor.
     volumes:
       - ./backend/src:/src
 
@@ -66,6 +66,7 @@ services:
     # Volume para persistir los datos de la base de datos.
     # "db_data" es un volumen manejado por Docker que es oculto.
     # En "/var/lib/mysql" dentro del contenedor, MySQL por defecto escribe archivos.
+    # Los scripts MySQL dentro del directorio local "./scripts" se ejecutarán en orden alfabético en la base de datos la primera vez que se levante.
     volumes:
       - db_data:/var/lib/mysql
       - ./scripts:/docker-entrypoint-initdb.d
@@ -78,6 +79,6 @@ services:
 volumes:
   db_data:
 
-    # Definición de las redes. "ucu_network" es la red interna que conecta la app y la base de datos.
+# Definición de las redes. "ucu_network" es la red interna que conecta la app y la base de datos.
 networks:
   ucu_network:
