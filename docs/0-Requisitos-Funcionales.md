@@ -60,25 +60,28 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
 
 ## Backend
 
-### Lógica espacial
+### Lógica temporal y espacial
 
-- [ ] En las clases, instructor y alumno no puede estar en 2 clases del mismo turno.
-- [ ] En el horario de clase, esta no puede ser modificada o eliminada.
+- [x] En las clases, instructor y alumno no puede estar en 2 clases del mismo turno.
+- [x] En el horario de clase, esta no puede ser modificada o eliminada.
+- [x] Un alumno sólo se puede anotar a una clase de una actividad con la que cumpla la edad mínima.
 
 ### Create Read Update Delete (Endpoints)
 
 - [x] CRUD sobre Instructores.
-- [ ] CRUD sobre Turnos.
-- [ ] CRUD sobre Alumnos.
-- [ ] RU sobre Actividades.
-- [ ] RU sobre Clases, solo los campos: instructor, turno, y agregar y quitar alumnos en las clases grupales.
-- [ ] R reportes.
+- [x] CRUD sobre Turnos.
+- [x] CRUD sobre Alumnos.
+- [x] R sobre Equipamientos.
+- [x] RU sobre Actividades.
+- [x] CRUD sobre Clases.
+- [x] CRUD sobre Asistencias (tabla en la base de datos: ALUMNOS_CLASES).
+- [x] R reportes.
 
 ### Reportes
 
-- [ ] Actividades que más ingresos generan – se debe sumar el costo de equipamiento.
-- [ ] Actividades con más alumnos.
-- [ ] Los turnos más con más clases dictadas.
+- [x] Actividades que más ingresos generan – se debe sumar el costo de equipamiento.
+- [x] Actividades con más alumnos.
+- [x] Los turnos más con más clases dictadas.
 
 ---
 

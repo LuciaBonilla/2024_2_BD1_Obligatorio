@@ -2,21 +2,18 @@ from model.MySQLScriptRunner import MySQLScriptRunner
 from utils.MySQLScriptGenerator import MySQLScriptGenerator
 from utils.DataFormatter import DataFormatter
 
-class Instructor:
+class Turno:
     """
-        Representa la entidad Instructor.
+        Representa la entidad Turno.
         
         Estado: clase terminada.
     """
-    table_name = "INSTRUCTORES"
-    values_needed = ["ci", "nombre", "apellido", "telefono_contacto"]
+    table_name = "TURNOS"
+    values_needed = ["hora_inicio", "hora_fin"]
     
-    def __init__(self, ci: int, nombre: str, apellido: str, telefono_contacto: str, correo_contacto: str =None):
-        self.ci = ci
-        self.nombre = nombre
-        self.apellido = apellido
-        self.telefono_contacto = telefono_contacto
-        self.correo_contacto = correo_contacto
+    def __init__(self, hora_inicio: str, hora_fin: str):
+        self.hora_inicio = hora_inicio
+        self.hora_fin = hora_fin
 
     def insert(self) -> bool:
         """
@@ -33,11 +30,12 @@ class Instructor:
         )
         return MySQLScriptRunner.run_script_to_modify_database(script=script, params=params)
 
-    def update(self) -> bool:
+    def update(self, id: int) -> bool:
         """
             Intenta actualizar un registro asociado en la tabla.
             
-            Nota: el atributo de filtrado es `ci`.
+            Entrada:
+                - `id`: id del turno.
                 
             Salida:
                 - `True` si la operación fue exitosa, en caso contrario, `False`.
@@ -46,17 +44,18 @@ class Instructor:
         """
         script, params = MySQLScriptGenerator.create_update_script(
             entity=self,
-            filter_key="ci",
-            filter_value=self.ci,
+            filter_key="id",
+            filter_value=id,
             table_name=self.table_name
         )
         return MySQLScriptRunner.run_script_to_modify_database(script=script, params=params)
     
-    def delete(self) -> bool:
+    def delete(self, id: int) -> bool:
         """
             Intenta eliminar un registro asociado en la tabla.
             
-            Nota: el atributo de filtrado es `ci`.
+            Entrada:
+                - `id`: id del turno.
                 
             Salida:
                 - `True` si la operación fue exitosa, en caso contrario, `False`.
@@ -64,30 +63,30 @@ class Instructor:
             Estado: método terminado.
         """
         script, params = MySQLScriptGenerator.create_delete_script(
-            filter_key="ci",
-            filter_value=self.ci,
+            filter_key="id",
+            filter_value=id,
             table_name=self.table_name
         )
         return MySQLScriptRunner.run_script_to_modify_database(script=script, params=params)
     
     @classmethod
-    def get_instructor_by_ci(cls, ci: int) -> dict:
+    def get_turno_by_id(cls, id: int) -> dict:
         """
-            Retorna los datos de un instructor en un diccionario.
+            Retorna los datos de un turno en un diccionario.
             
             Entrada:
-                - `ci`: cédula de identidad.
+                - `id`: id del turno.
                 
             Salida:
                 - `None`, si no encontró nada.
-                - `duplicated` si encontró más de un registro correspondiente a esa cédula.
-                - un diccionario con la info del instructor.
+                - `duplicated` si encontró más de un registro correspondiente a esa id.
+                - un diccionario con la info del turno.
                 
             Estado: método terminado.
         """
         script, params = MySQLScriptGenerator.create_select_all_columns_script(
-            filter_key="ci",
-            filter_value=ci,
+            filter_key="id",
+            filter_value=id,
             table_name=cls.table_name
         )
         data = MySQLScriptRunner.run_script_to_query_database(script=script, params=params)
@@ -100,9 +99,9 @@ class Instructor:
             return "duplicated"
     
     @classmethod
-    def get_all_instructores(cls) -> list[dict]:
+    def get_all_turnos(cls) -> list[dict]:
         """
-            Retorna todos los instructores como una lista de diccionarios, donde cada diccionario contiene la info de un instructor.
+            Retorna todos los turnos como una lista de diccionarios, donde cada diccionario contiene la info de un turno.
             
             Salida:
                 - `None` si no encuentra nada, en caso contrario, la lista de diccionarios.
