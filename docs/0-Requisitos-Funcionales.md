@@ -1,4 +1,4 @@
-# Introducción
+# Introducción :clipboard:
 
 El próximo semestre, la UCU planea abrir una escuela de deportes de nieve cómo una forma de ampliar la propuesta de deportes y de actividades ofreciendo una experiencia única.
 
@@ -40,11 +40,13 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
 - Actividades con más alumnos 
 - Los turnos más con más clases dictadas
 
-# Requisitos Funcionales
+---
+
+# Requisitos Funcionales Alcanzados :white_check_mark:
 
 ---
 
-## Dockerización
+## Dockerización de los Servicios
 
 - [x] Bases de Datos.
 - [x] Backend.
@@ -60,11 +62,11 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
 
 ## Backend
 
-### Lógica temporal y espacial
+### Lógica Temporal y Espacial
 
 - [x] En las clases, instructor y alumno no puede estar en 2 clases del mismo turno.
 - [x] En el horario de clase, esta no puede ser modificada o eliminada.
-- [x] Un alumno sólo se puede anotar a una clase de una actividad con la que cumpla la edad mínima.
+- [x] Un alumno sólo se puede anotar a una clase de una actividad con la que cumpla al menos la edad mínima.
 
 ### Create Read Update Delete (Endpoints)
 
