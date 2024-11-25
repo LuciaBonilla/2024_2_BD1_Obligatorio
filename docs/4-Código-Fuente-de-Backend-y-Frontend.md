@@ -34,8 +34,8 @@ Script MySQL que se termina ejecutando:
 
 `SELECT * FROM products WHERE category = 'Gifts\'--' AND released = 1;` -> La barra indica que `'` es parte de la cadena literal. Da todos los productos lanzados.
 
-# Frontend
+## Frontend
 
 - El [frontend](../frontend/ucu-web/) fue construido con Vite: una herramienta de desarrollo que tiene como objetivo proporcionar una experiencia de desarrollo más rápida y sencilla para proyectos web modernos.
 
-- Utiliza la librería React que simplifica la creación de interfaces de usuario a través de la creación de componentes que representan una parte de la interfaz, lo cual usa enormemente los paradigmas de la programación orientada a objetos.
+- Utiliza la librería `React` que simplifica la creación de interfaces de usuario a través de la creación de componentes que representan una parte de la interfaz, lo cual usa enormemente los paradigmas de la programación orientada a objetos.

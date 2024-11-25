@@ -26,7 +26,7 @@ La arquitectura basada en contenedores simplificó el proceso de desarrollo, ase
 
 - Estandarización y Modularidad: El uso de herramientas modernas como Flask para el backend y React para el frontend aseguró un desarrollo organizado y la posibilidad de futuras expansiones.
 
-3. Las limiticiones identificados fueron:
+3. Las limiticiones identificadas fueron:
 
 - Implementación de Seguridad: Aunque se implementaron mecanismos básicos, el envío de credenciales en cada solicitud no es óptimo. Migrar a un sistema basado en tokens, como JWT, sería una mejora significativa.
 
@@ -38,4 +38,4 @@ La arquitectura basada en contenedores simplificó el proceso de desarrollo, ase
 
 4. Flexibilidad y Escalabilidad
 
-El diseño del sistema permitió agregar entidades de la escuela (alumnos, instructores, etc.) sin alterar significativamente la estructura existente. Además, los reportes permitieron consultar datos para evaluar si el sistema debe escalar.
+El diseño del sistema permitió consultar, agregar, editar y eliminar entidades de la escuela (alumnos, instructores, etc.) sin alterar significativamente la estructura existente. Además, los reportes permitieron consultar datos para evaluar si el sistema debe escalar a futuro.
