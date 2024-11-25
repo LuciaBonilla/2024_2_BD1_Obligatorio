@@ -67,7 +67,7 @@ const InstructoresPage = () => {
   };
 
   return (
-    <div>
+    <>
       <DataTable data={instructores} onEdit={handleEdit} onDelete={handleDelete} />
       <h2>{isEditing ? "Editar Instructor" : "Crear Instructor"}</h2>
       <Box component="form" onSubmit={handleSubmit}>
@@ -114,7 +114,7 @@ const InstructoresPage = () => {
         </Stack>
         <Button type="submit">{isEditing ? 'Actualizar' : 'Crear'}</Button>
       </Box>
-    </div>
+    </>
   );
 };
 

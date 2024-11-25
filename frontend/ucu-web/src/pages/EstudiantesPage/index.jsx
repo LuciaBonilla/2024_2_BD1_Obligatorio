@@ -70,7 +70,7 @@ const EstudiantesPage = () => {
   };
 
   return (
-    <div>
+    <>
       <DataTable data={alumnos} onEdit={handleEdit} onDelete={handleDelete} />
       <h2>{isEditing ? "Editar Alumno" : "Crear Alumno"}</h2>
       <Box component="form" onSubmit={handleSubmit}>
@@ -128,7 +128,7 @@ const EstudiantesPage = () => {
         </Stack>
         <Button type="submit">{isEditing ? "Actualizar" : "Crear"}</Button>
       </Box>
-    </div>
+    </>
   );
 };
 

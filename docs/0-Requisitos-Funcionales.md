@@ -116,7 +116,7 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
   - Formulario de creación y edición de instructores.
   - Funcionalidad para eliminar instructores.
 
-- [ ] Crear la página de **Turnos**:
+- [X] Crear la página de **Turnos**:
 
   - Vista de lista de turnos.
   - Formulario de creación y edición de turnos.
