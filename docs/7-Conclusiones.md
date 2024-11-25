@@ -38,4 +38,8 @@ La arquitectura basada en contenedores simplificó el proceso de desarrollo, ase
 
 4. Flexibilidad y Escalabilidad
 
-El diseño del sistema permitió consultar, agregar, editar y eliminar entidades de la escuela (alumnos, instructores, etc.) sin alterar significativamente la estructura existente. Además, los reportes permitieron consultar datos para evaluar si el sistema debe escalar a futuro.
+- El diseño del sistema permitió consultar, agregar, editar y eliminar entidades de la escuela (alumnos, instructores, etc.) sin alterar significativamente la estructura existente.
+
+- Los tipos de datos elegidos al crear las tablas permitieron reducir la memoria desperdiciada, garantizar que los valores almacenados cumplan con un formato y rango esperado, y prevenir errores de conversión y validación de datos. Estos ítems son cruciales para la escabilidad futura del sistema.
+
+- Además, los reportes permitieron consultar datos para evaluar si el sistema debe escalar a futuro.
