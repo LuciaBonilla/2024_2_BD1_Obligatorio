@@ -75,7 +75,7 @@ const EstudiantesPage = () => {
       <DataTable data={alumnos} onEdit={handleEdit} onDelete={handleDelete} />
       <h2>{isEditing ? "Editar Alumno" : "Crear Alumno"}</h2>
       <Box component="form" onSubmit={handleSubmit}>
-        <Stack spacing={1} sx={{ width: "60%" }}>
+        <Stack spacing={1}>
           <TextField
             id="ci"
             name="ci"
@@ -103,7 +103,6 @@ const EstudiantesPage = () => {
           <TextField
             id="fecha_nacimiento"
             name="fecha_nacimiento"
-            label="Fecha de Nacimiento"
             type="date"
             value={form.fecha_nacimiento}
             onChange={handleInputChange}

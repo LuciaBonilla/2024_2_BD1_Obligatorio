@@ -8,8 +8,6 @@ const addAuthToRequest = (body) => {
     contrasena: "123",
   };
 };
-
-
 export const getAllAlumnos = async () => {
   try {
     const response = await fetch(API_URL_ALUMNOS, {
@@ -18,6 +16,9 @@ export const getAllAlumnos = async () => {
         "Content-Type": "application/json",
       },
     });
+    if (response.status === 404) {
+      return [];
+    }
     return await response.json();
   } catch (error) {
     console.error("Error fetching all alumnos:", error);
