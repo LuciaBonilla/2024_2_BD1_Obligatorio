@@ -12,11 +12,11 @@ class ClasesController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            # body_request = request.get_json() # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
-            if (not is_admin):
-                return jsonify({"message": "Unauthorized"}), 401
+            # is_admin = Validator.is_admin(body_request=body_request)
+            # if (not is_admin):
+            #     return jsonify({"message": "Unauthorized"}), 401
             
             clases = Clase.get_all_clases()
             if (clases is None):
@@ -32,11 +32,11 @@ class ClasesController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            # body_request = request.get_json() # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
-            if (not is_admin):
-                return jsonify({"message": "Unauthorized"}), 401
+            # is_admin = Validator.is_admin(body_request=body_request)
+            # if (not is_admin):
+            #     return jsonify({"message": "Unauthorized"}), 401
                 
             clase = Clase.get_clase_by_id(id=id)
             if (clase == None):

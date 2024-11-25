@@ -71,7 +71,6 @@ const EstudiantesPage = () => {
 
   return (
     <div>
-      <h1>Alumnos</h1>
       <DataTable data={alumnos} onEdit={handleEdit} onDelete={handleDelete} />
       <h2>{isEditing ? "Editar Alumno" : "Crear Alumno"}</h2>
       <Box component="form" onSubmit={handleSubmit}>

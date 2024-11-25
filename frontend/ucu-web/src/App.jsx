@@ -3,8 +3,10 @@ import { Tabs, Tab, Box } from "@mui/material";
 import "./App.css";
 import InstructoresPage from "./pages/InstructoresPage";
 import EstudiantesPage from "./pages/EstudiantesPage";
+import ClasesPage from "./pages/ClasesPage";
+
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -20,12 +22,12 @@ function App() {
       <Tabs value={tabIndex} onChange={handleTabChange} centered>
         <Tab label="Estudiantes" />
         <Tab label="Instructores" />
-        <Tab label="Update" />
+        <Tab label="Clases" />
         <Tab label="Delete" />
       </Tabs>
       {tabIndex === 0 && <EstudiantesPage />}
       {tabIndex === 1 && <InstructoresPage />}
-      {tabIndex === 2 && <div>Update Page</div>}
+      {tabIndex === 2 && <ClasesPage />}
       {tabIndex === 3 && <div>Delete Page</div>}
     </Box>
   );
