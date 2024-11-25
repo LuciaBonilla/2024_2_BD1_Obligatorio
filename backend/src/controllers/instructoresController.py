@@ -3,6 +3,7 @@ from model.entities.Instructor import Instructor
 from model.Validator import Validator
 import logging
 
+
 class InstructoresController:
     """
         Estado: controlador terminado.
@@ -13,9 +14,8 @@ class InstructoresController:
             Estado: método terminado.
         """
         try:
-            headers = request.headers  # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=headers)
+            is_admin = Validator.is_admin(headers=request.headers)
             if not is_admin:
                 return jsonify({"message": "Unauthorized"}), 401
 
@@ -35,7 +35,7 @@ class InstructoresController:
         try:
             body_request = request.get_json()  # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
 
@@ -59,18 +59,18 @@ class InstructoresController:
             body_request = request.get_json()
             current_app.logger.info(f"Request body: {body_request}")
 
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
 
             for field in Instructor.values_needed:
                 if field not in body_request:
                     return jsonify({"error": f"Missing field: {field}"}), 400
-            
-            logging.info(f"CI: {body_request['ci']}") 
+
+            logging.info(f"CI: {body_request['ci']}")
             instructor = Instructor.get_instructor_by_ci(
                 ci=body_request["ci"])
-            
+
             current_app.logger.debug(f"Instructor found: {instructor}")
             if (instructor != None):
                 return jsonify({"message": "Instructor already created", "instructor": instructor}), 400
@@ -99,7 +99,7 @@ class InstructoresController:
         try:
             body_request = request.get_json()
 
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
 
@@ -134,9 +134,9 @@ class InstructoresController:
             logging.info(f"Get request to delet: {ci}")
             # body_request = request.get_json()
 
-            # is_admin = Validator.is_admin(body_request=body_request)
-            # if (not is_admin):
-            #     return jsonify({"message": "Unauthorized"}), 401
+            is_admin = Validator.is_admin(headers=request.headers)
+            if (not is_admin):
+                return jsonify({"message": "Unauthorized"}), 401
 
             instructor = Instructor.get_instructor_by_ci(ci=ci)
             if (instructor == None):
@@ -144,7 +144,6 @@ class InstructoresController:
 
             if (instructor == "duplicated"):
                 return jsonify({"message": "Instructor duplicated, server can't handle it"}), 500
-
 
             instructor = Instructor(
                 ci=ci,

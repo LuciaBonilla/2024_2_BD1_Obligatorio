@@ -1,6 +1,7 @@
 import os
 import mysql.connector
 from flask import current_app
+import logging
 class MySQLScriptRunner:
     """
         Responsabilidad: Conectarse a la base de datos, y ejecutar los scripts MySQL e inyectar los valores que le llegan.
@@ -94,6 +95,7 @@ class MySQLScriptRunner:
 
             Estado: método completado.
         """
+        logging.info(f"Script: {script}", params)
         data = None
         try:
             # Establece la conexión con la base de datos.

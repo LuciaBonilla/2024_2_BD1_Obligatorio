@@ -41,8 +41,8 @@ const TurnosPage = () => {
         });
       });
     } else {
-      createTurno(form).then((newTurno) => {
-        setTurnos((prev) => [...prev, newTurno]);
+      createTurno(form).then(() => {
+        getAllTurnos().then((turnos) => setTurnos(turnos));
         setForm({
           id: null,
           hora_fin: "",

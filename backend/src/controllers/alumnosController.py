@@ -13,10 +13,9 @@ class AlumnosController:
         """
         try:
             # body_request = request.get_json() # Da un diccionario.
-
-            # is_admin = Validator.is_admin(body_request=body_request)
-            # if (not is_admin):
-            #     return jsonify({"message": "Unauthorized"}), 401
+            is_admin = Validator.is_admin(headers=request.headers)
+            if (not is_admin):
+                return jsonify({"message": "Unauthorized"}), 401
             
             alumnos = Alumno.get_all_alumnos()
             if (alumnos is None):
@@ -32,11 +31,9 @@ class AlumnosController:
             Estado: método terminado.
         """
         try:
-            # body_request = request.get_json() # Da un diccionario.
-
-            # is_admin = Validator.is_admin(body_request=body_request)
-            # if (not is_admin):
-            #     return jsonify({"message": "Unauthorized"}), 401
+            is_admin = Validator.is_admin(headers=request.headers)
+            if (not is_admin):
+                return jsonify({"message": "Unauthorized"}), 401
                 
             alumno = Alumno.get_alumno_by_ci(ci=ci)
             if (alumno == None):
@@ -57,7 +54,7 @@ class AlumnosController:
         try:
             body_request = request.get_json()
             
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
                 
@@ -93,7 +90,7 @@ class AlumnosController:
         try:
             body_request = request.get_json()
             
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
                 
@@ -126,9 +123,8 @@ class AlumnosController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json()
             
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
                 

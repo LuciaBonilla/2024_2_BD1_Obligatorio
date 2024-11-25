@@ -13,7 +13,7 @@ import {
   Alert,
 } from "@mui/material";
 import axios from "axios";
-
+import { createOptions } from "../../externalAPI/AuthAuxiliar";
 const ReportsPage = () => {
   const [mostProfitableActivities, setMostProfitableActivities] = useState([]);
   const [mostPopulateSchedules, setMostPopulateSchedules] = useState([]);
@@ -27,13 +27,16 @@ const ReportsPage = () => {
         const [profitableActivities, populateSchedules, populateActivities] =
           await Promise.all([
             axios.get(
-              "http://localhost:3006/api/reportes/actividades_mas_ingresos"
+              "http://localhost:3006/api/reportes/actividades_mas_ingresos",
+              createOptions("GET")
             ),
             axios.get(
-              "http://localhost:3006/api/reportes/turnos_mas_frecuentes"
+              "http://localhost:3006/api/reportes/turnos_mas_frecuentes",
+              createOptions("GET")
             ),
             axios.get(
-              "http://localhost:3006/api/reportes/actividades_mas_alumnos"
+              "http://localhost:3006/api/reportes/actividades_mas_alumnos",
+              createOptions("GET")
             ),
           ]);
 

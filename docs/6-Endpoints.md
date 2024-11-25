@@ -16,11 +16,11 @@ Se utilizó esta [colección de Postman](./Obligatorio.postman_collection.json) 
 
 4. Autenticación:
 
-Todos los endpoints requieren enviar un JSON que incluya las credenciales de administrador por defecto:
+Todos los endpoints requieren enviar un header que incluya las credenciales de administrador por defecto:
 
 `
 {
-    "login": {
+    "headers": {
         "correo": "admin@mail.com",
         "contrasena": "123"
     }
@@ -29,10 +29,6 @@ Todos los endpoints requieren enviar un JSON que incluya las credenciales de adm
 
 Estas credenciales corresponden a una cuenta de administrador creada automáticamente en la tabla `LOGIN` de la base de datos ([ver script de insert en la base de datos](../scripts/2_insert-master-data.sql)).
 Esto añade una capa básica de seguridad para interactuar con la base de datos, ya que el backend no procesará ninguna operación si el registro asociado al login enviado no se encuntra en la base.
-
-
-Esta auth tendria que estar en el head, para cumplir con el estandar HTTP, pero por ahora lo pusimos en el body. 
-Lo desactivamos para poder incorporar con el frontend.
 
 5. Advertencia sobre Prácticas de Seguridad:
 

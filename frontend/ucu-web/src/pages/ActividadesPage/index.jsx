@@ -31,9 +31,7 @@ const ActividadesPage = () => {
     e.preventDefault();
     if (isEditing) {
       updateActividad(form.id, form).then(() => {
-        setActividades((prev) =>
-          prev.map((actividad) => (actividad.id === form.id ? form : actividad))
-        );
+        getAllActividades().then((actividades) => setActividades(actividades));
         setIsEditing(false);
         setForm({
           id: null,
@@ -95,7 +93,7 @@ const ActividadesPage = () => {
               type="number"
               onChange={handleInputChange}
             />
-            <Button type="submit">{isEditing ? "Actualizar" : "Crear"}</Button>
+            <Button type="submit">{"Actualizar"}</Button>
           </Stack>
         </form>
       </Stack>

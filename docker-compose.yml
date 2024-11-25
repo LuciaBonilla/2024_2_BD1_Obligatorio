@@ -13,6 +13,7 @@ services:
       - app
     volumes:
       - ./frontend/ucu-web:/app
+      - node_modules_volume:/app/node_modules
     networks:
       - ucu_network
 
@@ -78,6 +79,7 @@ services:
 # Definición de los volumes. "db_data" será usado para almacenar los datos de la base de datos MySQL de forma persistente.
 volumes:
   db_data:
+  node_modules_volume:
 
 # Definición de las redes. "ucu_network" es la red interna que conecta la app y la base de datos.
 networks:

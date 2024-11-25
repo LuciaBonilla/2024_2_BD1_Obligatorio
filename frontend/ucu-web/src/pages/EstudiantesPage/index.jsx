@@ -39,8 +39,8 @@ const EstudiantesPage = () => {
         resetForm();
       });
     } else {
-      createAlumno(form).then((newAlumno) => {
-        setAlumnos((prev) => [...prev, newAlumno]);
+      createAlumno(form).then(() => {
+        setAlumnos((prev) => [...prev, form]);
         resetForm();
       });
     }
@@ -124,6 +124,7 @@ const EstudiantesPage = () => {
             label="Correo de Contacto"
             value={form.correo_contacto}
             onChange={handleInputChange}
+            required
           />
         </Stack>
         <Button type="submit">{isEditing ? "Actualizar" : "Crear"}</Button>

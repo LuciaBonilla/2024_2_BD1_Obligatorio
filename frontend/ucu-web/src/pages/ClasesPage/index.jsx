@@ -45,8 +45,8 @@ const ClasesPage = () => {
         });
       });
     } else {
-      createClase(form).then((newClase) => {
-        setClases((prev) => [...prev, newClase]);
+      createClase(form).then(() => {
+        getAllClases().then((clases) => setClases(clases));
         setForm({
           ci_instructor: "",
           id_turno: "",

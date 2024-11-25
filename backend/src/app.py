@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config['DEBUG'] = True 
 CORS(app)
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 # Registro del blueprint de rutas. Usar la URI (http://localhost:3006/api)
 app.register_blueprint(api, url_prefix="/api")

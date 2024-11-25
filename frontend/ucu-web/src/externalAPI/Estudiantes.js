@@ -1,21 +1,9 @@
-const API_URL_INSTRUCTORES = "http://localhost:3006/api/instructores";
 const API_URL_ALUMNOS = "http://localhost:3006/api/alumnos";
+import { createOptions } from "./AuthAuxiliar";
 
-const addAuthToRequest = (body) => {
-  return {
-    ...body,
-    correo: "admin@mail.com",
-    contrasena: "123",
-  };
-};
 export const getAllAlumnos = async () => {
   try {
-    const response = await fetch(API_URL_ALUMNOS, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(API_URL_ALUMNOS, createOptions("GET"));
     if (response.status === 404) {
       return [];
     }
@@ -28,12 +16,10 @@ export const getAllAlumnos = async () => {
 
 export const getAlumnoByCI = async (ci) => {
   try {
-    const response = await fetch(`${API_URL_ALUMNOS}/${ci}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${API_URL_ALUMNOS}/${ci}`,
+      createOptions("GET")
+    );
     return await response.json();
   } catch (error) {
     console.error(`Error fetching alumno with CI ${ci}:`, error);
@@ -43,14 +29,10 @@ export const getAlumnoByCI = async (ci) => {
 
 export const createAlumno = async (alumno) => {
   try {
-    const requestBody = addAuthToRequest(alumno);
-    const response = await fetch(API_URL_ALUMNOS, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const response = await fetch(
+      API_URL_ALUMNOS,
+      createOptions("POST", alumno)
+    );
     return await response.json();
   } catch (error) {
     console.error("Error creating alumno:", error);
@@ -60,14 +42,10 @@ export const createAlumno = async (alumno) => {
 
 export const updateAlumno = async (ci, alumno) => {
   try {
-    const requestBody = addAuthToRequest(alumno);
-    const response = await fetch(`${API_URL_ALUMNOS}/${ci}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const response = await fetch(
+      `${API_URL_ALUMNOS}/${ci}`,
+      createOptions("PATCH", alumno)
+    );
     return await response.json();
   } catch (error) {
     console.error(`Error updating alumno with CI ${ci}:`, error);
@@ -77,14 +55,10 @@ export const updateAlumno = async (ci, alumno) => {
 
 export const deleteAlumno = async (ci) => {
   try {
-    const requestBody = addAuthToRequest({});
-    const response = await fetch(`${API_URL_ALUMNOS}/${ci}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    });
+    const response = await fetch(
+      `${API_URL_ALUMNOS}/${ci}`,
+      createOptions("DELETE")
+    );
     return await response.json();
   } catch (error) {
     console.error(`Error deleting alumno with CI ${ci}:`, error);

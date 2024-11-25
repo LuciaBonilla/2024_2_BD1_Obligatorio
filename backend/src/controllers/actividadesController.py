@@ -12,8 +12,6 @@ class ActividadesController:
             Estado: método terminado.
         """
         try:
-            # body_request = request.get_json() # Da un diccionario.
-
             is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
@@ -32,11 +30,9 @@ class ActividadesController:
             Estado: método terminado.
         """
         try:
-            # body_request = request.get_json() # Da un diccionario.
-
-            # is_admin = Validator.is_admin(body_request=body_request)
-            # if (not is_admin):
-            #     return jsonify({"message": "Unauthorized"}), 401
+            is_admin = Validator.is_admin(headers=request.headers)
+            if (not is_admin):
+                return jsonify({"message": "Unauthorized"}), 401
                 
             actividad = Actividad.get_actividad_by_id(id=id)
             if (actividad == None):
@@ -57,7 +53,7 @@ class ActividadesController:
         try:
             body_request = request.get_json()
             
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
                 
