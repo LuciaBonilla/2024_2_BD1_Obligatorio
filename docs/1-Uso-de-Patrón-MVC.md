@@ -1,10 +1,10 @@
 # Uso del Patrón de Arquitectura de Software (MVC - Modelo–Vista–Controlador)
 
-En nuestro proyecto, implementamos el patrón de arquitectura MVC (Modelo-Vista-Controlador), cuyo objetivo es separar las responsabilidades en tres componentes principales. Esto facilita el mantenimiento, escalabilidad y reutilización del código.
+El proyecto implementa el patrón de arquitectura MVC (Modelo-Vista-Controlador), cuyo objetivo es separar las responsabilidades en tres componentes principales. Esto facilita el mantenimiento, escalabilidad y reutilización del código.
 
-Nota: Tener en cuenta que nuestra arquitectura no es 100% acorde al patrón MVC, es decir, se personalizó la arquitectura para mayor facilidad.
+`Nota:` Tener en cuenta que la arquitectura no es 100% acorde al patrón MVC.
 
-Los componentes de nuestro proyecto son:
+Los componentes del proyecto son:
 
 1. Modelo (Model)
 

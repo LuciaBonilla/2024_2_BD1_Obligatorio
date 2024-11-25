@@ -1,0 +1,1140 @@
+{
+	"info": {
+		"_postman_id": "fee5b227-a6ad-482a-99b2-a714a8bb6cc5",
+		"name": "Obligatorio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32815895"
+	},
+	"item": [
+		{
+			"name": "ACTIVIDADES",
+			"item": [
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/actividades",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"actividades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/actividades/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"actividades",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"nombre\": \"Skies\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/actividades/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"actividades",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ALUMNOS",
+			"item": [
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/alumnos",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"alumnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by ci",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/alumnos/:ci",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"alumnos",
+								":ci"
+							],
+							"variable": [
+								{
+									"key": "ci",
+									"value": "777"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"ci\": 444,\r\n    \"nombre\": \"D\",\r\n    \"apellido\": \"d\",\r\n    \"fecha_nacimiento\": \"2001-12-30\",\r\n    \"telefono_contacto\": \"099999999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/alumnos",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"alumnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by ci",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"apellido\": \"Doey\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/alumnos/:ci",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"alumnos",
+								":ci"
+							],
+							"variable": [
+								{
+									"key": "ci",
+									"value": "222"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by ci",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/alumnos/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"alumnos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "222"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ASISTENCIAS",
+			"item": [
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/asistencias",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"asistencias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by ci and class_id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/asistenicas/clases/:id/alumnos/:ci",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"asistenicas",
+								"clases",
+								":id",
+								"alumnos",
+								":ci"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								},
+								{
+									"key": "ci",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"ci_alumno\": 444,\r\n    \"id_clase\": 3,\r\n    \"id_equipamiento\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/asistencias",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"asistencias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by ci and class_id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"telefono_contacto\": \"101010\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/asistenicas/clases/:id/alumnos/:ci",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"asistenicas",
+								"clases",
+								":id",
+								"alumnos",
+								":ci"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								},
+								{
+									"key": "ci",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by ci and class_id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/asistenicas/clases/:id/alumnos/:ci",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"asistenicas",
+								"clases",
+								":id",
+								"alumnos",
+								":ci"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								},
+								{
+									"key": "ci",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CLASES",
+			"item": [
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/clases",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"clases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/clases/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"clases",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"ci_instructor\": 555,\r\n    \"id_turno\": 2,\r\n    \"id_actividad\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/clases",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"clases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"dictada\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/clases/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"clases",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/clases/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"clases",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EQUIPAMIENTOS",
+			"item": [
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/equipamientos",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"equipamientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/equipamientos/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"equipamientos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "INSTRUCTORES",
+			"item": [
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/instructores",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"instructores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by ci",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/instructores/:ci",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"instructores",
+								":ci"
+							],
+							"variable": [
+								{
+									"key": "ci",
+									"value": "222"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"ci\": 777,\r\n    \"nombre\": \"Z\",\r\n    \"apellido\": \"z\",\r\n    \"telefono_contacto\": \"+(666)\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/instructores",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"instructores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by ci",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"nombre\": \"Micaela\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/instructores/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"instructores",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "222"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by ci",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/instructores/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"instructores",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "222"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "REPORTES",
+			"item": [
+				{
+					"name": "actividad_mas_ingresos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/reportes/actividades_mas_ingresos",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"reportes",
+								"actividades_mas_ingresos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actividad_mas_alumnos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/reportes/actividades_mas_alumnos",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"reportes",
+								"actividades_mas_alumnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "turnos_mas_frecuentes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/reportes/turnos_mas_frecuentes",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"reportes",
+								"turnos_mas_frecuentes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TURNOS",
+			"item": [
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/turnos",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"turnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/turnos/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"turnos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"hora_inicio\": \"20:00:00\",\r\n    \"hora_fin\": \"22:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/turnos",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"turnos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    },\r\n    \"hora_inicio\": \"20:00:00\",\r\n    \"hora_fin\": \"22:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/turnos/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"turnos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": {\r\n        \"correo\": \"admin@mail.com\",\r\n        \"contrasena\": \"123\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/turnos/:id",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"turnos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PING",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URI}}/ping",
+					"host": [
+						"{{API_URI}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WELCOME",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URI}}",
+					"host": [
+						"{{API_URI}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

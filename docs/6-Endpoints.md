@@ -1,15 +1,52 @@
 # Endpoints
 
-- URI BASE: `http://localhost:3006/api`
+### Aclaraciones
 
-### 0. De comprobación
+1. URI Base:
 
-- `/`: Muestra un mensaje de bienvenida.
-- `/ping`: Comprueba si la conexión con la base de datos se puede establecer.
+Todas las rutas tienen como base: `http://localhost:3006/api`
+
+2. Postman:
+
+Se recomienda usar Postman, una herramienta útil para probar APIs en desarrollo web y aplicaciones móviles.
+
+3. Colección Postman:
+
+Se utilizó esta [colección de Postman](./Obligatorio.postman_collection.json) para probar los endpoints de la API.
+
+4. Autenticación:
+
+Todos los endpoints requieren enviar un JSON que incluya las credenciales de administrador por defecto:
+
+`
+{
+    "login": {
+        "correo": "admin@mail.com",
+        "contrasena": "123"
+    }
+}
+`
+
+Estas credenciales corresponden a una cuenta de administrador creada automáticamente en la tabla `LOGIN` de la base de datos ([ver script de insert en la base de datos](../scripts/2_insert-master-data.sql)).
+Esto añade una capa básica de seguridad para interactuar con la base de datos, ya que el backend no procesará ninguna operación si el registro asociado al login enviado no se encuntra en la base.
+
+5. Advertencia sobre Prácticas de Seguridad:
+
+Enviar credenciales en el cuerpo de una solicitud HTTP no es la práctica más segura, ya que:
+
+- Las contraseñas pueden almacenarse en logs o ser interceptadas si no se usa HTTPS.
+- Es preferible implementar un sistema donde las credenciales solo se envían una vez para obtener un token cifrado, como JWT, el cual se usa en solicitudes posteriores.
+
+Sin embargo, utilizar esta práctica no tan segura ha permitido agregar fácilmente un poco de seguridad.
+
+### 0. **De comprobación**
+
+- `/`: Muestra un mensaje de bienvenida. [x]
+- `/ping`: Comprueba si la conexión con la base de datos se puede establecer. [x]
 
 ### 1. **Instructors (Instructores)** [x]
 
-- **Base URI:** `/instructores`
+- **Base URI:** `/instructores` [x]
 - **Endpoints:**
   - `GET /instructores`: Retorna todos los instructores. [x]
   - `GET /instructores/<int:ci>`: Retorna un único instructor por CI. [x]
@@ -67,14 +104,15 @@
 
 ### 7. **Equipments (Equipamientos)** [x]
 
+- **Base URI**: `/equipamientos`
 - **Endpoints:**
   - `GET /equipamientos`: Retorna todos los equipamientos. [x]
   - `GET /equipamientos/<int:id>`: Retorna un único equipamiento por ID. [x]
 
-### Reportes [ ]
+### 8. **Reportes** [x]
 
 - **Base URI**: `/reportes`
 - **Endpoints:**
-  - **Actividad con más ingresos**: `/reportes/actividad_mas_ingresos`
-  - **Actividad con más alumnos**: `/reportes/actividad_mas_alumnos`
+  - **Actividades con más ingresos**: `/reportes/actividades_mas_ingresos`
+  - **Actividades con más alumnos**: `/reportes/actividades_mas_alumnos`
   - **Turnos con mas clases dictadas**: `/reportes/turnos_mas_frecuentes`
