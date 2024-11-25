@@ -12,11 +12,11 @@ class ReportesController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            # body_request = request.get_json() # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
-            if (not is_admin):
-                return jsonify({"message": "Unauthorized"}), 401
+            # is_admin = Validator.is_admin(body_request=body_request)
+            # if (not is_admin):
+            #     return jsonify({"message": "Unauthorized"}), 401
             
             actividades = ReportMaker.get_most_profitable_activities()
             if (actividades is None):
@@ -32,11 +32,11 @@ class ReportesController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            # body_request = request.get_json() # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
-            if (not is_admin):
-                return jsonify({"message": "Unauthorized"}), 401
+            # is_admin = Validator.is_admin(body_request=body_request)
+            # if (not is_admin):
+            #     return jsonify({"message": "Unauthorized"}), 401
                 
             turnos = ReportMaker.get_most_populate_schedules()
             if (turnos == None):
@@ -52,11 +52,11 @@ class ReportesController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            # body_request = request.get_json() # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
-            if (not is_admin):
-                return jsonify({"message": "Unauthorized"}), 401
+            # is_admin = Validator.is_admin(body_request=body_request)
+            # if (not is_admin):
+            #     return jsonify({"message": "Unauthorized"}), 401
                 
             actividades = ReportMaker.get_most_populate_activities()
             if (actividades == None):

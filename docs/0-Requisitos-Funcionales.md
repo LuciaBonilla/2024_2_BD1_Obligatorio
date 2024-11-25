@@ -122,7 +122,7 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
   - Formulario de creación y edición de turnos.
   - Funcionalidad para eliminar turnos.
 
-- [ ] Crear la página de **Actividades**:
+- [X] Crear la página de **Actividades**:
   - Vista de lista de actividades.
   - Formulario de creación y edición de actividades.
   - Funcionalidad para eliminar actividades.
