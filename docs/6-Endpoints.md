@@ -30,6 +30,10 @@ Todos los endpoints requieren enviar un JSON que incluya las credenciales de adm
 Estas credenciales corresponden a una cuenta de administrador creada automáticamente en la tabla `LOGIN` de la base de datos ([ver script de insert en la base de datos](../scripts/2_insert-master-data.sql)).
 Esto añade una capa básica de seguridad para interactuar con la base de datos, ya que el backend no procesará ninguna operación si el registro asociado al login enviado no se encuntra en la base.
 
+
+Esta auth tendria que estar en el head, para cumplir con el estandar HTTP, pero por ahora lo pusimos en el body. 
+Lo desactivamos para poder incorporar con el frontend.
+
 5. Advertencia sobre Prácticas de Seguridad:
 
 Enviar credenciales en el cuerpo de una solicitud HTTP no es la práctica más segura, ya que:
