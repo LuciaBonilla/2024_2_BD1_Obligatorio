@@ -51,6 +51,8 @@ class ReportMaker:
     def get_most_populate_schedules() -> list[dict]:
         """
             Se consulta: Los turnos con más clases dictadas.
+            
+            Nota: No se muestran los turnos que nunca han sido asistidos.
         """
         data = MySQLScriptRunner.run_script_to_query_database(
             script="""
@@ -81,6 +83,8 @@ class ReportMaker:
             Se consulta: Actividades con más alumnos.
 
             Nota: Se intuye a que se refiere a las actividades a las que han asistido (incluso si la asistencia no está confirmada) más alumnos.
+            
+            Nota: No se muestran los turnos nunca asistidos.
         """
         data = MySQLScriptRunner.run_script_to_query_database(
             script="""
