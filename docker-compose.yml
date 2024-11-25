@@ -2,19 +2,20 @@ services:
   # Dockerización para el frontend. Se comenta mientras
   # estamos en desarollo porque no funciona
   # correctamente con el hot-reload de React.
-  # frontend:
-  #   build:
-  #     context: ./frontend/ucu-web
-  #     dockerfile: ../Dockerfile
-  #   container_name: ucu_snow_sports_frontend
-  #   ports:
-  #     - "5173:5173"
-  #   depends_on:
-  #     - app
-  #   volumes:
-  #     - ./frontend/ucu-web:/app
-  #   networks:
-  #     - ucu_network
+  frontend:
+    build:
+      context: ./frontend/ucu-web
+      dockerfile: ../Dockerfile
+    container_name: ucu_snow_sports_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - app
+    volumes:
+      - ./frontend/ucu-web:/app
+      - node_modules_volume:/app/node_modules
+    networks:
+      - ucu_network
 
   # Dockerización para la app de backend.
   app:
@@ -78,6 +79,7 @@ services:
 # Definición de los volumes. "db_data" será usado para almacenar los datos de la base de datos MySQL de forma persistente.
 volumes:
   db_data:
+  node_modules_volume:
 
 # Definición de las redes. "ucu_network" es la red interna que conecta la app y la base de datos.
 networks:

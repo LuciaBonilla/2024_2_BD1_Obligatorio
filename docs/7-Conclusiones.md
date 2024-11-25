@@ -43,3 +43,9 @@ La arquitectura basada en contenedores simplificó el proceso de desarrollo, ase
 - Los tipos de datos elegidos al crear las tablas permitieron reducir la memoria desperdiciada, garantizar que los valores almacenados cumplan con un formato y rango esperado, y prevenir errores de conversión y validación de datos. Estos ítems son cruciales para la escabilidad futura del sistema.
 
 - Además, los reportes permitieron consultar datos para evaluar si el sistema debe escalar a futuro.
+
+5. Aprendizajes
+
+Habría sido útil utilizar una herramienta como OpenAPI para agilizar el desarrollo. Aunque puede ser confusa de aprender e implementar al inicio, creemos que a largo plazo habría facilitado tareas como la validación de datos en el frontend, backend y base de datos. Además, habría reducido significativamente la cantidad de código repetitivo (boilerplate) escrito manualmente.
+
+Se podria mejorar el docker del frontend, esta muy pesado actualmente. 

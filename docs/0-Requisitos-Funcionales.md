@@ -98,31 +98,31 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
 
 ### Páginas y Vistas Principales
 
-- [ ] Crear la página de **Estudiantes**:
+- [X] Crear la página de **Estudiantes**:
 
   - Vista de lista de estudiantes.
   - Formulario de creación y edición de estudiantes.
   - Funcionalidad para eliminar estudiantes.
 
-- [ ] Crear la página de **Clases**:
-
+- [X] Crear la página de **Clases**:
+  FALTA AMOR 
   - Vista de lista de clases.
   - Formulario de creación y edición de clases, que incluya selección de instructor y turno.
   - Funcionalidad para agregar y quitar estudiantes en clases grupales.
 
-- [ ] Crear la página de **Instructores**:
+- [X] Crear la página de **Instructores**:
 
   - Vista de lista de instructores.
   - Formulario de creación y edición de instructores.
   - Funcionalidad para eliminar instructores.
 
-- [ ] Crear la página de **Turnos**:
+- [X] Crear la página de **Turnos**:
 
   - Vista de lista de turnos.
   - Formulario de creación y edición de turnos.
   - Funcionalidad para eliminar turnos.
 
-- [ ] Crear la página de **Actividades**:
+- [X] Crear la página de **Actividades**:
   - Vista de lista de actividades.
   - Formulario de creación y edición de actividades.
   - Funcionalidad para eliminar actividades.

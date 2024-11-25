@@ -16,11 +16,11 @@ Se utilizó esta [colección de Postman](./Obligatorio.postman_collection.json) 
 
 4. Autenticación:
 
-Todos los endpoints requieren enviar un JSON que incluya las credenciales de administrador por defecto:
+Todos los endpoints requieren enviar un header que incluya las credenciales de administrador por defecto:
 
 `
 {
-    "login": {
+    "headers": {
         "correo": "admin@mail.com",
         "contrasena": "123"
     }

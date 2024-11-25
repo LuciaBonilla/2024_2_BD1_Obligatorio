@@ -39,3 +39,5 @@ Script MySQL que se termina ejecutando:
 - El [frontend](../frontend/ucu-web/) fue construido con Vite: una herramienta de desarrollo que tiene como objetivo proporcionar una experiencia de desarrollo más rápida y sencilla para proyectos web modernos.
 
 - Utiliza la librería `React` que simplifica la creación de interfaces de usuario a través de la creación de componentes que representan una parte de la interfaz, lo cual usa enormemente los paradigmas de la programación orientada a objetos.
+
+- Usa los componentes [mui](https://mui.com) para agilizar el prototipiado.  

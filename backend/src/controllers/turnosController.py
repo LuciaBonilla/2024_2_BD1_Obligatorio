@@ -2,6 +2,7 @@ from flask import request, jsonify
 from model.entities.Turno import Turno
 from model.Validator import Validator
 
+
 class TurnosController:
     """
         Estado: controlador terminado.
@@ -12,16 +13,16 @@ class TurnosController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            # body_request = request.get_json() # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
-            
+
             turnos = Turno.get_all_turnos()
             if (turnos is None):
                 return jsonify({"message": "Schedules not found"}), 404
-                
+
             return jsonify(turnos), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 500
@@ -32,19 +33,19 @@ class TurnosController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            body_request = request.get_json()  # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
-                
+
             turno = Turno.get_turno_by_id(id=id)
             if (turno == None):
                 return jsonify({"message": "Schedule not found"}), 404
-                
+
             if (turno == "duplicated"):
                 return jsonify({"message": "Schedule duplicated, server can't handle it"}), 500
-            
+
             return jsonify(turno), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 500
@@ -56,15 +57,15 @@ class TurnosController:
         """
         try:
             body_request = request.get_json()
-            
-            is_admin = Validator.is_admin(body_request=body_request)
+
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
-                
+
             for field in Turno.values_needed:
                 if field not in body_request:
                     return jsonify({"error": f"Missing field: {field}"}), 400
-                
+
             turno = Turno(
                 hora_inicio=body_request["hora_inicio"],
                 hora_fin=body_request["hora_fin"]
@@ -76,7 +77,7 @@ class TurnosController:
                 return jsonify({"message": "Error creating"}), 400
         except Exception as e:
             return jsonify({"error": str(e)}), 500
-        
+
     @staticmethod
     def update_turno(id: int):
         """
@@ -84,18 +85,18 @@ class TurnosController:
         """
         try:
             body_request = request.get_json()
-            
-            is_admin = Validator.is_admin(body_request=body_request)
+
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
-                
+
             turno = Turno.get_turno_by_id(id=id)
             if (turno == None):
                 return jsonify({"message": "Schedule not found"}), 404
-            
+
             if (turno == "duplicated"):
                 return jsonify({"message": "Schedule duplicated, server can't handle"}), 500
-                
+
             turno = Turno(
                 hora_inicio=body_request["hora_inicio"] if "hora_inicio" in body_request else turno["hora_inicio"],
                 hora_fin=body_request["hora_fin"] if "hora_fin" in body_request else turno["hora_fin"]
@@ -115,18 +116,18 @@ class TurnosController:
         """
         try:
             body_request = request.get_json()
-            
-            is_admin = Validator.is_admin(body_request=body_request)
+
+            is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
-                
+
             turno = Turno.get_turno_by_id(id=id)
             if (turno == None):
                 return jsonify({"message": "Schedule not found"}), 404
-                
+
             if (turno == "duplicated"):
                 return jsonify({"message": "Schedule duplicated, server can't handle it"}), 500
-                    
+
             turno = Turno(
                 hora_inicio=turno["hora_inicio"],
                 hora_fin=turno["hora_fin"]
