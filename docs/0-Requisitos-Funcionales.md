@@ -108,7 +108,7 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
   - Formulario de creación y edición de clases, que incluya selección de instructor y turno.
   - Funcionalidad para agregar y quitar estudiantes en clases grupales.
 
-- [ ] Crear la página de **Instructores**:
+- [X] Crear la página de **Instructores**:
 
   - Vista de lista de instructores.
   - Formulario de creación y edición de instructores.

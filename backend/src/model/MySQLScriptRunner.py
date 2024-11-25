@@ -1,6 +1,6 @@
 import os
 import mysql.connector
-
+from flask import current_app
 class MySQLScriptRunner:
     """
         Responsabilidad: Conectarse a la base de datos, y ejecutar los scripts MySQL e inyectar los valores que le llegan.
@@ -117,7 +117,7 @@ class MySQLScriptRunner:
             # Cierra el cursor.
             cursor.close()
         except mysql.connector.Error as error:
-            print(f"Error al ejecutar el script de consulta: {error}")
+            current_app.logger.error(f"Error al ejecutar el script de consulta: {error}")
         finally:
             # Asegura que la conexión se cierre en cualquier caso.
             cls.__end_database_connection()

@@ -12,11 +12,11 @@ class TurnosController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            # body_request = request.get_json() # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
-            if (not is_admin):
-                return jsonify({"message": "Unauthorized"}), 401
+            # is_admin = Validator.is_admin(body_request=body_request)
+            # if (not is_admin):
+            #     return jsonify({"message": "Unauthorized"}), 401
             
             turnos = Turno.get_all_turnos()
             if (turnos is None):

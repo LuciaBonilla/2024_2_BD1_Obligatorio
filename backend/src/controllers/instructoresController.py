@@ -1,27 +1,28 @@
 from flask import request, jsonify, json, current_app
 from model.entities.Instructor import Instructor
 from model.Validator import Validator
+import logging
 
 class InstructoresController:
     """
         Estado: controlador terminado.
     """
     @staticmethod
-    def get_all_instructores(): 
+    def get_all_instructores():
         """
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            headers = request.headers  # Da un diccionario.
 
-            is_admin = Validator.is_admin(body_request=body_request)
-            if (not is_admin):
+            is_admin = Validator.is_admin(body_request=headers)
+            if not is_admin:
                 return jsonify({"message": "Unauthorized"}), 401
-            
+
             instructores = Instructor.get_all_instructores()
-            if (instructores is None):
+            if instructores is None:
                 return jsonify({"message": "Instructors not found"}), 404
-                
+
             return jsonify(instructores), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 500
@@ -32,19 +33,19 @@ class InstructoresController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json() # Da un diccionario.
+            body_request = request.get_json()  # Da un diccionario.
 
             is_admin = Validator.is_admin(body_request=body_request)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
-                
+
             instructor = Instructor.get_instructor_by_ci(ci=ci)
             if (instructor == None):
                 return jsonify({"message": "Instructor not found"}), 404
-                
+
             if (instructor == "duplicated"):
                 return jsonify({"message": "Instructor duplicated, server can't handle it"}), 500
-            
+
             return jsonify(instructor), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 500
@@ -56,19 +57,24 @@ class InstructoresController:
         """
         try:
             body_request = request.get_json()
-            
+            current_app.logger.info(f"Request body: {body_request}")
+
             is_admin = Validator.is_admin(body_request=body_request)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
-                
+
             for field in Instructor.values_needed:
                 if field not in body_request:
                     return jsonify({"error": f"Missing field: {field}"}), 400
-
-            instructor = Instructor.get_instructor_by_ci(ci=body_request["ci"])
+            
+            logging.info(f"CI: {body_request['ci']}") 
+            instructor = Instructor.get_instructor_by_ci(
+                ci=body_request["ci"])
+            
+            current_app.logger.debug(f"Instructor found: {instructor}")
             if (instructor != None):
-                return jsonify({"message": "Instructor already created"}), 400
-                
+                return jsonify({"message": "Instructor already created", "instructor": instructor}), 400
+
             instructor = Instructor(
                 ci=body_request["ci"],
                 nombre=body_request["nombre"],
@@ -76,6 +82,7 @@ class InstructoresController:
                 telefono_contacto=body_request["telefono_contacto"],
                 correo_contacto=body_request.get("correo_contacto", None)
             )
+            current_app.logger.debug(f"Instructor: {instructor}")
             operation_result = instructor.insert()
             if (operation_result):
                 return jsonify({"message": "Instructor created successfully", "ci": instructor.ci}), 201
@@ -83,7 +90,7 @@ class InstructoresController:
                 return jsonify({"message": "Error creating"}), 400
         except Exception as e:
             return jsonify({"error": str(e)}), 500
-        
+
     @staticmethod
     def update_instructor(ci: int):
         """
@@ -91,18 +98,18 @@ class InstructoresController:
         """
         try:
             body_request = request.get_json()
-            
+
             is_admin = Validator.is_admin(body_request=body_request)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
-                
+
             instructor = Instructor.get_instructor_by_ci(ci=ci)
             if (instructor == None):
                 return jsonify({"message": "Instructor not found"}), 404
-            
+
             if (instructor == "duplicated"):
                 return jsonify({"message": "Instructor duplicated, server can't handle it"}), 500
-                
+
             instructor = Instructor(
                 ci=ci,
                 nombre=body_request["nombre"] if "nombre" in body_request else instructor["nombre"],
@@ -124,19 +131,21 @@ class InstructoresController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json()
-            
-            is_admin = Validator.is_admin(body_request=body_request)
-            if (not is_admin):
-                return jsonify({"message": "Unauthorized"}), 401
-                
+            logging.info(f"Get request to delet: {ci}")
+            # body_request = request.get_json()
+
+            # is_admin = Validator.is_admin(body_request=body_request)
+            # if (not is_admin):
+            #     return jsonify({"message": "Unauthorized"}), 401
+
             instructor = Instructor.get_instructor_by_ci(ci=ci)
             if (instructor == None):
                 return jsonify({"message": "Instructor not found"}), 404
-                
+
             if (instructor == "duplicated"):
                 return jsonify({"message": "Instructor duplicated, server can't handle it"}), 500
-                    
+
+
             instructor = Instructor(
                 ci=ci,
                 nombre=instructor["nombre"],
