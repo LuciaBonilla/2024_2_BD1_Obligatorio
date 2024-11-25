@@ -160,14 +160,14 @@ def delete_asistencia(id, ci):
 
 # REPORTES.
 
-@api.route("/reportes/actividad_mas_ingresos", methods=["GET"])
+@api.route("/reportes/actividades_mas_ingresos", methods=["GET"])
 def get_most_profitable_activities():
     return ReportesController.get_most_profitable_activities()
 
-@api.route("/reportes/actividad_mas_alumnos", methods=["GET"])
+@api.route("/reportes/turnos_mas_frecuentes", methods=["GET"])
 def get_most_populate_schedules():
     return ReportesController.get_most_populate_schedules()
 
-@api.route("/reportes/turnos_mas_frecuentes", methods=["GET"])
+@api.route("/reportes/actividades_mas_alumnos", methods=["GET"])
 def get_most_populate_activities():
     return ReportesController.get_most_populate_activities()

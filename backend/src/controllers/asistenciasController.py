@@ -72,7 +72,7 @@ class AsistenciasController:
             asistencia = Asistencia(
                 ci_alumno=body_request["ci_alumno"],
                 id_clase=body_request["id_clase"],
-                id_equipamiento=body_request["id_equipamiento"]
+                id_equipamiento=body_request.get("id_equipamiento", None)
             )
             operation_result = asistencia.insert()
             if (operation_result):

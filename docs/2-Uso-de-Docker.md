@@ -1,6 +1,6 @@
 # Uso de Docker
 
-En este proyecto, Docker se utiliza para simplificar la gestión y despliegue de los servicios, garantizando un entorno consistente y fácil de replicar. Todo el sistema se levanta utilizando contenedores Docker independientes para los diferentes componentes de la aplicación.
+En el proyecto, Docker se utiliza para simplificar la gestión y despliegue de los servicios, garantizando un entorno consistente y fácil de replicar. Todo el sistema se levanta utilizando contenedores Docker independientes para los diferentes componentes de la aplicación.
 
 ## Arquitectura de Contenedores
 
@@ -9,6 +9,7 @@ El proyecto se compone de tres contenedores Docker separados:
 Base de Datos:
 - Proporciona almacenamiento y gestión de datos persistentes.
 - Configurada para garantizar una comunicación fluida con el backend.
+- Sus datos se persisten en un volumen aislado.
 
 Backend:
 - Implementa la lógica de negocio y la API que conecta el frontend con la base de datos.
@@ -18,9 +19,13 @@ Frontend:
 - Maneja la interfaz de usuario y consume los datos proporcionados por el backend.
 - Desplegado en un contenedor separado para mantener la modularidad.
 
+`Nota:` Este [diagrama](./diagrams/ArquitecturaContenedoresDocker.png) muestra cómo se interconectan los contenedores.
+
 ## Configuración con Docker Compose
 
-Para simplificar la configuración y el manejo de los contenedores, se utiliza un archivo [docker-compose.yml](../docker-compose.yml), el cual está comentado en cada una de sus líneas para aclarar sus funcionalidades.
+Para simplificar la configuración y el manejo de los contenedores, se utiliza un archivo [docker-compose.yml](../docker-compose.yml).
+
+`Nota:` El archivo `docker-compose.yml` está comentado en todas sus líneas para aclarar detalles de configuración.
 
 Este archivo define:
 
@@ -38,11 +43,11 @@ Cada componente del proyecto que no utiliza imágenes prediseñadas cuenta con s
 
 ## Ejecución de Scripts MySQL en la Base de Datos
 
-En el archivo [docker-compose.yml](../docker-compose.yml), se puede definir la carpeta de scripts MySQL que se ejecutarán sobre la base de datos la primera vez que se levante en un contenedor.
+En el archivo [docker-compose.yml](../docker-compose.yml), se define la carpeta de scripts MySQL que se ejecutarán sobre la base de datos la primera vez que se levante en un contenedor.
 
-- Los [scripts MySQL](../scripts/) se encuentran ordenados en la carpeta de forma alfabética, lo cual le dice al contenedor el orden de ejecución de los archivos. Aquí se encuentra más [información](https://hub.docker.com/_/mysql) sobre esto.
+Los [scripts MySQL](../scripts/) se encuentran ordenados en la carpeta de forma alfabética, lo cual le dice al contenedor el orden de ejecución de los archivos.
 
-Nota: Estos scripts sólo se ejecutarán la primera vez que se levante el contenedor con la base de datos.
+`Nota:` Estos scripts MySQL sólo se ejecutarán la primera vez que se levante el contenedor con la base de datos, por lo tanto, hacer un rebuild del proyecto no los volverá a ejecutar y, además, no borrará los datos guardados en la base de datos.
 
 ## Ventajas del Uso de Docker y Dockerfile
 
