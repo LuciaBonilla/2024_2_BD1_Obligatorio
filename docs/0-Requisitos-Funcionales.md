@@ -105,7 +105,7 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
   - Funcionalidad para eliminar estudiantes.
 
 - [X] Crear la página de **Clases**:
-  FALTA AMOR 
+  FALTA AMOR :C
   - Vista de lista de clases.
   - Formulario de creación y edición de clases, que incluya selección de instructor y turno.
   - Funcionalidad para agregar y quitar estudiantes en clases grupales.
@@ -131,7 +131,7 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
 
 Sugerencia usar Tables de [mui](https://mui.com/material-ui/react-table/)
 
-- [x] Crear la página de **Reportes**:
+- [] Crear la página de **Reportes**:
   - Subvista de “Actividades que más ingresos generan” (con el costo de equipamiento sumado).
   - Subvista de “Actividades con más alumnos”.
   - Subvista de “Turnos con más clases dictadas”.
