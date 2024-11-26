@@ -57,7 +57,6 @@ class InstructoresController:
         """
         try:
             body_request = request.get_json()
-            current_app.logger.info(f"Request body: {body_request}")
 
             is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
@@ -67,11 +66,9 @@ class InstructoresController:
                 if field not in body_request:
                     return jsonify({"error": f"Missing field: {field}"}), 400
 
-            logging.info(f"CI: {body_request['ci']}")
             instructor = Instructor.get_instructor_by_ci(
                 ci=body_request["ci"])
 
-            current_app.logger.debug(f"Instructor found: {instructor}")
             if (instructor != None):
                 return jsonify({"message": "Instructor already created", "instructor": instructor}), 400
 
@@ -82,7 +79,7 @@ class InstructoresController:
                 telefono_contacto=body_request["telefono_contacto"],
                 correo_contacto=body_request.get("correo_contacto", None)
             )
-            current_app.logger.debug(f"Instructor: {instructor}")
+
             operation_result = instructor.insert()
             if (operation_result):
                 return jsonify({"message": "Instructor created successfully", "ci": instructor.ci}), 201
