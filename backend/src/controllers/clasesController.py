@@ -12,8 +12,6 @@ class ClasesController:
             Estado: método terminado.
         """
         try:
-            # body_request = request.get_json() # Da un diccionario.
-
             is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
@@ -32,8 +30,6 @@ class ClasesController:
             Estado: método terminado.
         """
         try:
-            # body_request = request.get_json() # Da un diccionario.
-
             is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
