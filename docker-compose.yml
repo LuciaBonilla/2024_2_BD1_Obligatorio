@@ -1,7 +1,5 @@
 services:
-  # Dockerización para el frontend. Se comenta mientras
-  # estamos en desarollo porque no funciona
-  # correctamente con el hot-reload de React.
+  # Dockerización para el frontend.
   frontend:
     build:
       context: ./frontend/ucu-web
