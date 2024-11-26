@@ -1,4 +1,4 @@
-from flask import request, jsonify, json
+from flask import request, jsonify
 from model.entities.Equipamiento import Equipamiento
 from model.Validator import Validator
 
