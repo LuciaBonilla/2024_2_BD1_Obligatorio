@@ -1,4 +1,4 @@
-from flask import request, jsonify, current_app
+from flask import request, jsonify
 from model.entities.Clase import Clase
 from model.Validator import Validator
 
