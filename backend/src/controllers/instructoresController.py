@@ -1,7 +1,6 @@
-from flask import request, jsonify, json, current_app
+from flask import request, jsonify
 from model.entities.Instructor import Instructor
 from model.Validator import Validator
-import logging
 
 
 class InstructoresController:
