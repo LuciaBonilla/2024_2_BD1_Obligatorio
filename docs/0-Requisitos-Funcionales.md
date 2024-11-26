@@ -131,7 +131,7 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
 
 Sugerencia usar Tables de [mui](https://mui.com/material-ui/react-table/)
 
-- [ ] Crear la página de **Reportes**:
+- [x] Crear la página de **Reportes**:
   - Subvista de “Actividades que más ingresos generan” (con el costo de equipamiento sumado).
   - Subvista de “Actividades con más alumnos”.
   - Subvista de “Turnos con más clases dictadas”.
