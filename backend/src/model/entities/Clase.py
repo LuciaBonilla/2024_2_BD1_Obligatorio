@@ -59,7 +59,7 @@ class Clase:
         if (clase_actual is None):
             return False
         
-        if (Clase.can_update_or_delete_clase(clase_actual["id_turno"])):
+        if (Clase.can_update_or_delete_clase(clase_actual["id_turno"]) and Clase.can_instructor_assist(self.ci_instructor, self.id_turno)):
             script, params = MySQLScriptGenerator.create_update_script(
                 entity=self,
                 filter_key="id",
