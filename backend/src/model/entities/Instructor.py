@@ -1,8 +1,6 @@
 from model.MySQLScriptRunner import MySQLScriptRunner
 from utils.MySQLScriptGenerator import MySQLScriptGenerator
 from utils.DataFormatter import DataFormatter
-import logging
-
 
 class Instructor:
     """
@@ -70,7 +68,6 @@ class Instructor:
             filter_value=self.ci,
             table_name=self.table_name
         )
-        logging.info(f"Script: {script}")
         return MySQLScriptRunner.run_script_to_modify_database(script=script, params=params)
 
     @classmethod
@@ -88,13 +85,11 @@ class Instructor:
 
             Estado: método terminado.
         """
-        logging.info(f"Searching instructor with ci: {ci}")
         script, params = MySQLScriptGenerator.create_select_all_columns_script(
             filter_key="ci",
             filter_value=ci,
             table_name=cls.table_name
         )
-        logging.info(f"Script: {script}")
 
         data = MySQLScriptRunner.run_script_to_query_database(
             script=script, params=params)
