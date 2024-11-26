@@ -1,6 +1,4 @@
 from model.MySQLScriptRunner import MySQLScriptRunner
-import logging
-
 
 class Validator:
     """
@@ -22,7 +20,6 @@ class Validator:
 
             Estado: método terminado.
         """
-        logging.info(f"Correo: {headers['correo']}, Contrasena: {headers['contrasena']}")
         if "correo" not in headers or "contrasena" not in headers:
             return False
 
@@ -34,7 +31,6 @@ class Validator:
             """,
             params=(headers["correo"], headers["contrasena"])
         )
-        logging.info(f"Data: {data}")
         if data is None:
             return False
         else:
