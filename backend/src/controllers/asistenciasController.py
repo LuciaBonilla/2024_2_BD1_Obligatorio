@@ -128,8 +128,6 @@ class AsistenciasController:
             Estado: método terminado.
         """
         try:
-            body_request = request.get_json()
-
             is_admin = Validator.is_admin(headers=request.headers)
             if (not is_admin):
                 return jsonify({"message": "Unauthorized"}), 401
@@ -145,7 +143,7 @@ class AsistenciasController:
             asistencia = Asistencia(
                 ci_alumno=ci_alumno,
                 id_clase=id_clase,
-                id_equipamiento=body_request["id_equipamiento"] if "id_equipamiento" in body_request else asistencia["id_equipamiento"],
+                id_equipamiento=asistencia["id_equipamiento"],
             )
             operation_result = asistencia.delete()
             if (operation_result):
