@@ -1,3 +1,4 @@
+from flask import Flask, current_app
 import os
 import mysql.connector
 class MySQLScriptRunner:
@@ -161,7 +162,7 @@ class MySQLScriptRunner:
             cursor.close()
             result = True
         except mysql.connector.Error as error:
-            print(f"Error al ejecutar el script de modificación: {error}")
+            current_app.logger.error(f"Error al ejecutar el script de modificación: {error}")
 
             # Realiza un rollback para revertir los cambios en caso de error.
             if cls.__CONNECTION:
