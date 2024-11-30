@@ -21,24 +21,32 @@ const ReportsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Función sleep para pausar la ejecución.
+  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [profitableActivities, populateSchedules, populateActivities] =
-          await Promise.all([
-            axios.get(
-              "http://localhost:3006/api/reportes/actividades_mas_ingresos",
-              createOptions("GET")
-            ),
-            axios.get(
-              "http://localhost:3006/api/reportes/turnos_mas_frecuentes",
-              createOptions("GET")
-            ),
-            axios.get(
-              "http://localhost:3006/api/reportes/actividades_mas_alumnos",
-              createOptions("GET")
-            ),
-          ]);
+        const profitableActivities = await axios.get(
+          "http://localhost:3006/api/reportes/actividades_mas_ingresos",
+          createOptions("GET")
+        );
+
+        await sleep(1000);
+
+        const populateSchedules = await axios.get(
+          "http://localhost:3006/api/reportes/turnos_mas_frecuentes",
+          createOptions("GET")
+        );
+
+        await sleep(1000);
+
+        const populateActivities = await axios.get(
+          "http://localhost:3006/api/reportes/actividades_mas_alumnos",
+          createOptions("GET")
+        );
+
+        await sleep(1000);
 
         setMostProfitableActivities(profitableActivities.data);
         setMostPopulateSchedules(populateSchedules.data);
