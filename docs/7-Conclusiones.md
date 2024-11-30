@@ -18,7 +18,7 @@ asegurando el cumplimiento de las reglas establecidas para las clases y la segur
 
 - Cumplimiento del Patrón MVC: Aunque no es una implementación completamente estricta, la separación de responsabilidades entre el Modelo, la Vista y el Controlador aseguró un diseño limpio y escalable.
 
-- Dockerización: La utilización de Docker y Docker Compose simplificó el despliegue, facilitó la reproducción del entorno de desarrollo y redució problemas relacionados con diferencias en entornos.
+- Dockerización: La utilización de Docker y Docker Compose simplificó el despliegue, facilitó la reproducción del entorno de desarrollo y redujo problemas relacionados con diferencias en entornos.
 
 La arquitectura basada en contenedores simplificó el proceso de desarrollo, asegurando consistencia entre entornos y facilitando la integración continua. Esto reduce los costos asociados a errores de configuración y permite escalar los servicios independientemente.
 
@@ -26,7 +26,7 @@ La arquitectura basada en contenedores simplificó el proceso de desarrollo, ase
 
 - Estandarización y Modularidad: El uso de herramientas modernas como Flask para el backend y React para el frontend aseguró un desarrollo organizado y la posibilidad de futuras expansiones.
 
-3. Las limiticiones identificadas fueron:
+3. Las limitaciones identificadas fueron:
 
 - Implementación de Seguridad: Aunque se implementaron mecanismos básicos, el envío de credenciales en cada solicitud no es óptimo. Migrar a un sistema basado en tokens, como JWT, sería una mejora significativa.
 
@@ -40,7 +40,7 @@ La arquitectura basada en contenedores simplificó el proceso de desarrollo, ase
 
 - El diseño del sistema permitió consultar, agregar, editar y eliminar entidades de la escuela (alumnos, instructores, etc.) sin alterar significativamente la estructura existente.
 
-- Los tipos de datos elegidos al crear las tablas permitieron reducir la memoria desperdiciada, garantizar que los valores almacenados cumplan con un formato y rango esperado, y prevenir errores de conversión y validación de datos. Estos ítems son cruciales para la escabilidad futura del sistema.
+- Los tipos de datos elegidos al crear las tablas permitieron reducir la memoria desperdiciada, garantizar que los valores almacenados cumplan con un formato y rango esperado, y prevenir errores de conversión y validación de datos. Estos ítems son cruciales para la escalabilidad futura del sistema.
 
 - Además, los reportes permitieron consultar datos para evaluar si el sistema debe escalar a futuro.
 
@@ -48,4 +48,4 @@ La arquitectura basada en contenedores simplificó el proceso de desarrollo, ase
 
 Habría sido útil utilizar una herramienta como OpenAPI para agilizar el desarrollo. Aunque puede ser confusa de aprender e implementar al inicio, creemos que a largo plazo habría facilitado tareas como la validación de datos en el frontend, backend y base de datos. Además, habría reducido significativamente la cantidad de código repetitivo (boilerplate) escrito manualmente.
 
-Se podria mejorar el docker del frontend, esta muy pesado actualmente. 
+Se podría mejorar el docker del frontend, está muy pesado actualmente.

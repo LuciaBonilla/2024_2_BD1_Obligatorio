@@ -1,6 +1,6 @@
 # Código Fuente de Backend y Frontend
 
-Se utiliza monorepo para todo el proyecto, en este se tiene el backend y el frontend; se usa Docker para iniciar todo.
+Se utiliza `monorepo` para todo el proyecto, en este se tiene el backend y el frontend; se usa Docker para iniciar todo.
 
 ## Backend
 
@@ -28,16 +28,16 @@ Script MySQL con concatenación normal de strings:
 
 Script MySQL con placeholders:
 
-`SELECT * FROM products WHERE category = %s AND released = 1` -> Script  dado a `my-sql-connector` junto al valor de la entrada del usuario pata que la inyecte de forma segura.
+`SELECT * FROM products WHERE category = %s AND released = 1` -> Script  dado a `my-sql-connector` junto al valor de la entrada del usuario para que la inyecte de forma segura.
 
-Script MySQL que se termina ejecutando:
+Script MySQL ejecutado:
 
 `SELECT * FROM products WHERE category = 'Gifts\'--' AND released = 1;` -> La barra indica que `'` es parte de la cadena literal. Da todos los productos lanzados.
 
 ## Frontend
 
-- El [frontend](../frontend/ucu-web/) fue construido con Vite: una herramienta de desarrollo que tiene como objetivo proporcionar una experiencia de desarrollo más rápida y sencilla para proyectos web modernos.
+- El [frontend](../frontend/ucu-web/) fue construido con Vite: una herramienta de desarrollo que tiene como objetivo proporcionar una experiencia de desarrollo más eficiente para proyectos web modernos.
 
-- Utiliza la librería `React` que simplifica la creación de interfaces de usuario a través de la creación de componentes que representan una parte de la interfaz, lo cual usa enormemente los paradigmas de la programación orientada a objetos.
+- Utiliza la librería `React` que simplifica la creación de interfaces de usuario a través de la creación de componentes que representan una parte de la interfaz, lo cual aprovecha ampliamente los paradigmas de la programación orientada a objetos.
 
 - Usa los componentes [mui](https://mui.com) para agilizar el prototipiado.  

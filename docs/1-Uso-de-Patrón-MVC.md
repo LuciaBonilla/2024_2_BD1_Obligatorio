@@ -47,12 +47,14 @@ Responsabilidades:
 - Proporcionar una interfaz intuitiva para la interacción del usuario.
 
 Acciones:
-- Realizar solicitudes al backend (Controlador y Modelo) mediante HTTP (por ejemplo, usando fetch o axios).
+- Realizar solicitudes al backend (Controlador y Modelo) mediante HTTP (por ejemplo, usando `fetch` o `axios`).
 - Recibir y procesar datos en formato JSON proporcionados por el backend.
 - Renderizar la interfaz de usuario con la información obtenida.
 
 Localización:
 - En el frontend del proyecto.
+
+---
 
 ## Resumen del Flujo MVC en el Proyecto
 

@@ -2,6 +2,8 @@
 
 En el proyecto, Docker se utiliza para simplificar la gestión y despliegue de los servicios, garantizando un entorno consistente y fácil de replicar. Todo el sistema se levanta utilizando contenedores Docker independientes para los diferentes componentes de la aplicación.
 
+---
+
 ## Arquitectura de Contenedores
 
 El proyecto se compone de tres contenedores Docker separados:

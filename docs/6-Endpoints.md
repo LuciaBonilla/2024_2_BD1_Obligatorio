@@ -12,7 +12,7 @@ Se recomienda usar Postman, una herramienta útil para probar APIs en desarrollo
 
 3. Colección Postman:
 
-Se utilizó esta [colección de Postman](./Obligatorio.postman_collection.json) para probar los endpoints de la API.
+Se utilizó esta [colección de Postman](./Obligatorio.json) para probar los endpoints de la API.
 
 4. Autenticación:
 
@@ -28,7 +28,7 @@ Todos los endpoints requieren enviar un header que incluya las credenciales de a
 `
 
 Estas credenciales corresponden a una cuenta de administrador creada automáticamente en la tabla `LOGIN` de la base de datos ([ver script de insert en la base de datos](../scripts/2_insert-master-data.sql)).
-Esto añade una capa básica de seguridad para interactuar con la base de datos, ya que el backend no procesará ninguna operación si el registro asociado al login enviado no se encuntra en la base.
+Esto añade una capa básica de seguridad para interactuar con la base de datos, ya que el backend no procesará ninguna operación si el registro asociado al login enviado no se encuentra en la base.
 
 5. Advertencia sobre Prácticas de Seguridad:
 
@@ -88,7 +88,7 @@ Sin embargo, utilizar esta práctica no tan segura ha permitido agregar fácilme
 - **Endpoints:**
   - `GET /clases`: Retorna todas los clases. [x]
   - `GET /clases/<int:ci>`: Retorna una única clase por ID. [x]
-  - `POST /clases`: Crea un nueva clase. [x]
+  - `POST /clases`: Crea una nueva clase. [x]
   - `PATCH /clases/<int:ci>`: Actualiza una clase por ID. Retorna ID. [x]
   - `DELETE /clases/<int:ci>`: Elimina una clase por ID. [x]
 
@@ -115,4 +115,4 @@ Sin embargo, utilizar esta práctica no tan segura ha permitido agregar fácilme
 - **Endpoints:**
   - **Actividades con más ingresos**: `/reportes/actividades_mas_ingresos`
   - **Actividades con más alumnos**: `/reportes/actividades_mas_alumnos`
-  - **Turnos con mas clases dictadas**: `/reportes/turnos_mas_frecuentes`
+  - **Turnos con más clases dictadas**: `/reportes/turnos_mas_frecuentes`

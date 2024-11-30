@@ -1,8 +1,8 @@
 # Introducción :clipboard:
 
-El próximo semestre, la UCU planea abrir una escuela de deportes de nieve cómo una forma de ampliar la propuesta de deportes y de actividades ofreciendo una experiencia única.
+El próximo semestre, la UCU planea abrir una escuela de deportes de nieve como una forma de ampliar la propuesta de deportes y de actividades ofreciendo una experiencia única.
 
-En un comienzo, la escuela contara con 3 actividades: snowboard, ski y moto de nieve. Estas actividades tienen un costo asociado y una restricción de edad. 
+En un comienzo, la escuela contará con 3 actividades: snowboard, ski y moto de nieve. Estas actividades tienen un costo asociado y una restricción de edad. 
 
 La escuela tiene varios instructores ―no especializados, es decir, pueden dar clase de cualquier actividad― los cuales ofrecen los siguientes turnos para las clases: 
 - De 9:00 a 11:00 
@@ -82,8 +82,8 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
 ### Reportes
 
 - [x] Actividades que más ingresos generan – se debe sumar el costo de equipamiento.
-- [x] Actividades con más alumnos.
-- [x] Los turnos más con más clases dictadas.
+- [x] Actividades con más alumnos (el reporte no muestra la actividades que no tuvieron ningún alumno, es decir, se omiten esos registros).
+- [x] Los turnos con más clases dictadas (el reporte no muestra los turnos que no tuvieron ninguna clase dictada en ese lapso, es decir, se omiten esos registros).
 
 ---
 
@@ -131,7 +131,9 @@ Con el fin de evaluar el éxito de la escuela, se solicita además un sistema de
 
 Sugerencia usar Tables de [mui](https://mui.com/material-ui/react-table/)
 
-- [] Crear la página de **Reportes**:
+- [X] Crear la página de **Reportes**:
   - Subvista de “Actividades que más ingresos generan” (con el costo de equipamiento sumado).
-  - Subvista de “Actividades con más alumnos”.
-  - Subvista de “Turnos con más clases dictadas”.
+  - Subvista de “Actividades con más alumnos” (el reporte no muestra la actividades que no tuvieron nigún alumno, es decir, se omiten esos registros).
+  - Subvista de “Turnos con más clases dictadas” (el reporte no muestra los turnos que no tuvieron ninguna clase dictada en ese lapso, es decir, se omiten esos registros).
+
+---
